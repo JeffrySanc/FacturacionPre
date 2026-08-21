@@ -60,7 +60,7 @@ namespace PresentacionFacturacion
             this.menusalir});
             this.menu.Location = new System.Drawing.Point(0, 82);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(1043, 81);
+            this.menu.Size = new System.Drawing.Size(1080, 81);
             this.menu.TabIndex = 1;
             this.menu.Text = "menuStrip1";
             this.menu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menu_ItemClicked);
@@ -93,6 +93,7 @@ namespace PresentacionFacturacion
             this.articulosToolStripMenuItem.Name = "articulosToolStripMenuItem";
             this.articulosToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
             this.articulosToolStripMenuItem.Text = "Artículos";
+            this.articulosToolStripMenuItem.Click += new System.EventHandler(this.articulosToolStripMenuItem_Click);
             // 
             // unidadesDeMedidasToolStripMenuItem
             // 
@@ -184,7 +185,7 @@ namespace PresentacionFacturacion
             this.menucolor.Location = new System.Drawing.Point(0, 0);
             this.menucolor.Name = "menucolor";
             this.menucolor.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menucolor.Size = new System.Drawing.Size(1043, 82);
+            this.menucolor.Size = new System.Drawing.Size(1080, 82);
             this.menucolor.TabIndex = 2;
             this.menucolor.Text = "menuStrip2";
             this.menucolor.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menucolor_ItemClicked);
@@ -230,7 +231,7 @@ namespace PresentacionFacturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 595);
+            this.ClientSize = new System.Drawing.Size(1080, 623);
             this.Controls.Add(this.lblusuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

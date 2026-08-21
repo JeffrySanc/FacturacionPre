@@ -32,9 +32,9 @@ namespace PresentacionFacturacion
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtcodigo = new System.Windows.Forms.TextBox();
+            this.txtnombre = new System.Windows.Forms.TextBox();
+            this.txtprecio = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -64,36 +64,36 @@ namespace PresentacionFacturacion
             this.label3.TabIndex = 14;
             this.label3.Text = "Precio:";
             // 
-            // textBox1
+            // txtcodigo
             // 
-            this.textBox1.Location = new System.Drawing.Point(212, 101);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(318, 26);
-            this.textBox1.TabIndex = 15;
+            this.txtcodigo.Location = new System.Drawing.Point(212, 101);
+            this.txtcodigo.Multiline = true;
+            this.txtcodigo.Name = "txtcodigo";
+            this.txtcodigo.Size = new System.Drawing.Size(318, 26);
+            this.txtcodigo.TabIndex = 15;
             // 
-            // textBox2
+            // txtnombre
             // 
-            this.textBox2.Location = new System.Drawing.Point(216, 158);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(314, 26);
-            this.textBox2.TabIndex = 16;
+            this.txtnombre.Location = new System.Drawing.Point(216, 158);
+            this.txtnombre.Name = "txtnombre";
+            this.txtnombre.Size = new System.Drawing.Size(314, 26);
+            this.txtnombre.TabIndex = 16;
             // 
-            // textBox3
+            // txtprecio
             // 
-            this.textBox3.Location = new System.Drawing.Point(222, 228);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(217, 26);
-            this.textBox3.TabIndex = 17;
+            this.txtprecio.Location = new System.Drawing.Point(222, 228);
+            this.txtprecio.Name = "txtprecio";
+            this.txtprecio.Size = new System.Drawing.Size(217, 26);
+            this.txtprecio.TabIndex = 17;
             // 
             // MantenimientoArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 450);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtprecio);
+            this.Controls.Add(this.txtnombre);
+            this.Controls.Add(this.txtcodigo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -108,9 +108,9 @@ namespace PresentacionFacturacion
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
-            this.Controls.SetChildIndex(this.textBox2, 0);
-            this.Controls.SetChildIndex(this.textBox3, 0);
+            this.Controls.SetChildIndex(this.txtcodigo, 0);
+            this.Controls.SetChildIndex(this.txtnombre, 0);
+            this.Controls.SetChildIndex(this.txtprecio, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,8 +121,8 @@ namespace PresentacionFacturacion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtcodigo;
+        private System.Windows.Forms.TextBox txtnombre;
+        private System.Windows.Forms.TextBox txtprecio;
     }
 }

@@ -66,5 +66,14 @@ namespace PresentacionFacturacion
             conArti.WindowState = FormWindowState.Maximized; //Ocupa todo el contenedor
             conArti.Show();
         }
+
+        private void articulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form mantArti = new MantenimientoArticulos();
+            mantArti.MdiParent = this;
+            mantArti.WindowState = FormWindowState.Maximized; //Ocupa todo el contenedor
+            mantArti.Show();
+
+        }
     }
 }
