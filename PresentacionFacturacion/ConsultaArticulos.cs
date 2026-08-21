@@ -22,7 +22,7 @@ namespace PresentacionFacturacion
         private void ConsultaArticulos_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = LlenarDGV("SFTARTI0").Tables[0];
-            this.reportViewer1.RefreshReport();
+            //this.reportViewer1.RefreshReport();
         }
 
         private void btnbuscar_Click(object sender, EventArgs e)
