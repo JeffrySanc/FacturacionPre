@@ -42,7 +42,7 @@ namespace PresentacionFacturacion
             // 
             // btneliminar
             // 
-            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click_1);
+            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
             // 
             // btnbuscar
             // 

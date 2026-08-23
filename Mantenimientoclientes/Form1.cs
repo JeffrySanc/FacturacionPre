@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using PresentacionFacturacion;
+
 namespace Mantenimientoclientes
 {
     public partial class MantenimientoCliente : Mantenimientos
     {
-        public Form1()
+        public MantenimientoCliente()
         {
             InitializeComponent();
         }

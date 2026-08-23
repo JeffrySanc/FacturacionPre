@@ -90,11 +90,6 @@ namespace PresentacionFacturacion
             factura.Show();
         }
 
-        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form mantCli = new MantenimientoCliente();

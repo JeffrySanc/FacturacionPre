@@ -113,26 +113,6 @@ namespace PresentacionFacturacion
             }
         }
 
-        private void btneliminar_Click_1(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Esta segur@ de eliminar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                string letrero = "Registro Eliminado de forma satisfatoria...";
-                string cmd = string.Format("delete from sftunid0 where coduni ='{0}'", txtcodigo_uni.Text.Trim());
-
-                DataSet ds = Conexion_BD.Ejecutar(cmd);
-
-                MessageBox.Show(letrero);
-
-                BorrarCampos(this);
-                txtcodigo_uni.Focus();
-                btneliminar.Enabled = false;
-                btnguardar.Enabled = false;
-
-            }
-        }
-
         private void btnsalir_Click(object sender, EventArgs e)
         {
            
