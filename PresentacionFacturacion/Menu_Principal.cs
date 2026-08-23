@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace PresentacionFacturacion
         public Menu_Principal(string nombre)
         {
             InitializeComponent();
+            
 
             lblusuario.Text = nombre;
         }
@@ -29,7 +31,7 @@ namespace PresentacionFacturacion
         private void unidadesDeMedidasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form unidades_medidas = new MantenimientoUnidMedi();
-            unidades_medidas.MdiParent = this; 
+            unidades_medidas.MdiParent = this;
             unidades_medidas.WindowState = FormWindowState.Maximized; //Ocupa todo el contenedor
             unidades_medidas.Show();
         }
@@ -91,6 +93,23 @@ namespace PresentacionFacturacion
         private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form mantCli = new MantenimientoCliente();
+            mantCli.MdiParent = this;
+            mantCli.WindowState = FormWindowState.Maximized; //Ocupa todo el contenedor
+            mantCli.Show();
+
+        }
+
+        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form conCli = new ConsultaClientes();
+            conCli.MdiParent = this;
+            conCli.WindowState = FormWindowState.Maximized; //Ocupa todo el contenedor
+            conCli.Show();
         }
     }
 }
