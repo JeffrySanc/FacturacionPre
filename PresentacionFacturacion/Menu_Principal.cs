@@ -71,8 +71,25 @@ namespace PresentacionFacturacion
         {
             Form mantArti = new MantenimientoArticulos();
             mantArti.MdiParent = this;
-            mantArti.WindowState = FormWindowState.Maximized; //Ocupa todo el contenedor
+            mantArti.WindowState = FormWindowState.Maximized;
             mantArti.Show();
+        }
+
+        private void unidadesDeMedidasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void facturacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form factura = new Facturacion();
+            factura.MdiParent = this;
+            factura.WindowState = FormWindowState.Maximized;
+            factura.Show();
+        }
+
+        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
 
         }
     }

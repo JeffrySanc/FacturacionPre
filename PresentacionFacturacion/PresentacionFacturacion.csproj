@@ -86,11 +86,23 @@
     <Compile Include="ConsultaArticulos.Designer.cs">
       <DependentUpon>ConsultaArticulos.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConsultArticulosFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultArticulosFactura.Designer.cs">
+      <DependentUpon>ConsultArticulosFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consultas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Consultas.Designer.cs">
       <DependentUpon>Consultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturacion.Designer.cs">
+      <DependentUpon>Facturacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Formbase.cs">
       <SubType>Form</SubType>
@@ -136,18 +148,18 @@
     <Compile Include="ReportesClientes.Designer.cs">
       <DependentUpon>ReportesClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Unidades_Medidas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Unidades_Medidas.Designer.cs">
-      <DependentUpon>Unidades_Medidas.cs</DependentUpon>
-    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="ConsultaArticulos.resx">
       <DependentUpon>ConsultaArticulos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConsultArticulosFactura.resx">
+      <DependentUpon>ConsultArticulosFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas.resx">
       <DependentUpon>Consultas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturacion.resx">
+      <DependentUpon>Facturacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formbase.resx">
       <DependentUpon>Formbase.cs</DependentUpon>
@@ -169,9 +181,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportesClientes.resx">
       <DependentUpon>ReportesClientes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Unidades_Medidas.resx">
-      <DependentUpon>Unidades_Medidas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />

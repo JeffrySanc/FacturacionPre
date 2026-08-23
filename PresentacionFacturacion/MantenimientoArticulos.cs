@@ -17,6 +17,7 @@ namespace PresentacionFacturacion
         public MantenimientoArticulos()
         {
             InitializeComponent();
+            this.AutoScroll = true;
         }
         public int encontrado = 0;
 

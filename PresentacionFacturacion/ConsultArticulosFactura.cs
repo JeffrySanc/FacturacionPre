@@ -1,0 +1,55 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+using Conexion;
+
+namespace PresentacionFacturacion
+{
+    public partial class ConsultArticulosFactura : Consultas
+    {
+        public ConsultArticulosFactura()
+        {
+            InitializeComponent();
+        }
+
+        private void ConsultArticulosFactura_Load(object sender, EventArgs e)
+        {
+            DataSet ds;
+            string cmd = "select codart as 'Código', desart as 'Descripción', " +
+                         "preart as 'Precio', exiactart as 'Existencia' " +
+                         "from sftarti0";
+
+            ds = Conexion_BD.Ejecutar(cmd);
+            dataGridView1.DataSource = ds.Tables[0];
+        }
+
+        private void btnbuscar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtconsulta.Text.Trim()) == false)
+            {
+                try
+                {
+                    DataSet ds;
+                    string cmd = "select codart as 'Código', desart as 'Descripción', " +
+                                 "preart as 'Precio', exiactart as 'Existencia' " +
+                                 "from sftarti0 where desart like " +
+                                 "('%" + txtconsulta.Text.Trim() + "%')"
+                                 ;
+                    ds = Conexion_BD.Ejecutar(cmd);
+                    dataGridView1.DataSource = ds.Tables[0];
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show("Ha ocurrido un error...");
+                }
+            }
+        }
+    }
+}

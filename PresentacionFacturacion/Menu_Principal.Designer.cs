@@ -127,7 +127,8 @@ namespace PresentacionFacturacion
             // 
             this.facturacionToolStripMenuItem.Name = "facturacionToolStripMenuItem";
             this.facturacionToolStripMenuItem.Size = new System.Drawing.Size(203, 34);
-            this.facturacionToolStripMenuItem.Text = "Facturación";
+            this.facturacionToolStripMenuItem.Text = "Facturacion";
+            this.facturacionToolStripMenuItem.Click += new System.EventHandler(this.facturacionToolStripMenuItem_Click);
             // 
             // menuconsultas
             // 
@@ -150,6 +151,7 @@ namespace PresentacionFacturacion
             this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
             this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(286, 34);
             this.clientesToolStripMenuItem1.Text = "Clientes";
+            this.clientesToolStripMenuItem1.Click += new System.EventHandler(this.clientesToolStripMenuItem1_Click);
             // 
             // artículosToolStripMenuItem
             // 
@@ -163,6 +165,7 @@ namespace PresentacionFacturacion
             this.unidadesDeMedidasToolStripMenuItem1.Name = "unidadesDeMedidasToolStripMenuItem1";
             this.unidadesDeMedidasToolStripMenuItem1.Size = new System.Drawing.Size(286, 34);
             this.unidadesDeMedidasToolStripMenuItem1.Text = "Unidades de Medidas";
+            this.unidadesDeMedidasToolStripMenuItem1.Click += new System.EventHandler(this.unidadesDeMedidasToolStripMenuItem1_Click);
             // 
             // menusalir
             // 
