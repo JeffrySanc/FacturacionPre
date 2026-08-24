@@ -26,6 +26,7 @@ namespace PresentacionFacturacion
                 dataGridDetalle.Columns.Add("Cantidad", "Cantidad");
                 dataGridDetalle.Columns.Add("Subtotal", "Subtotal");
 
+            //this.reportViewer1.RefreshReport();
         }
 
         private void Facturacion_shown(object sender, EventArgs e)
@@ -36,7 +37,18 @@ namespace PresentacionFacturacion
 
         private void btnbuscarclie_Click(object sender, EventArgs e)
         {
-                
+            ConsultaClientes consCli = new ConsultaClientes();
+            consCli.ShowDialog();
+
+            if (consCli.DialogResult == DialogResult.OK)
+            {
+                int fila = consCli.dataGridView1.CurrentRow.Index;
+
+                txtclientefact.Text = consCli.dataGridView1.Rows[fila].Cells[0].Value.ToString();   // codclie
+                txtnombrefact.Text = consCli.dataGridView1.Rows[fila].Cells[1].Value.ToString();    // nomclie
+
+                txtnombrefact.Focus();
+            }
         }
 
         private void btnagregarArti_Click(object sender, EventArgs e)

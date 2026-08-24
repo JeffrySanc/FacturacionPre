@@ -13,7 +13,7 @@ namespace Conexion
 
             public static DataSet Ejecutar(string cmd)
             {
-            SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-LQA6N6S\\SQLEXPRESS; Initial Catalog = dbFactura; Integrated Security = True");
+            SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-P3T7POF; Initial Catalog = dbFactura; Integrated Security = True");
 
             conexion.Open();
 
