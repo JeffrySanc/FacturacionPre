@@ -36,10 +36,9 @@ namespace PresentacionFacturacion
 
                 encontrado = 1;
             }
-            catch (Exception Err)
+            catch (Exception)
             {
                 encontrado = 0;
-                // MessageBox.Show("Error " + Err.Message);
             }
 
             txtNombre.Focus();

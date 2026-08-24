@@ -45,7 +45,7 @@ namespace PresentacionFacturacion
                     ds = Conexion_BD.Ejecutar(cmd);
                     dataGridView1.DataSource = ds.Tables[0];
                 }
-                catch (Exception error)
+                catch (Exception)
                 {
                     MessageBox.Show("Ha ocurrido un error...");
                 }

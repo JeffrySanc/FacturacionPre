@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsClientes" targetNamespace="http://tempuri.org/dsClientes.xsd" xmlns:mstns="http://tempuri.org/dsClientes.xsd" xmlns="http://tempuri.org/dsClientes.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsClientes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsClientes" msprop:Generator_UserDSName="dsClientes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="_x0020_sftclie0" msprop:Generator_TableClassName="_sftclie0DataTable" msprop:Generator_TableVarName="table_sftclie0" msprop:Generator_TablePropName="_sftclie0" msprop:Generator_RowDeletingName="_sftclie0RowDeleting" msprop:Generator_RowChangingName="_sftclie0RowChanging" msprop:Generator_RowEvHandlerName="_sftclie0RowChangeEventHandler" msprop:Generator_RowDeletedName="_sftclie0RowDeleted" msprop:Generator_UserTableName=" sftclie0" msprop:Generator_RowChangedName="_sftclie0RowChanged" msprop:Generator_RowEvArgName="_sftclie0RowChangeEvent" msprop:Generator_RowClassName="_sftclie0Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODCLI" msprop:Generator_ColumnVarNameInTable="columnCODCLI" msprop:Generator_ColumnPropNameInRow="CODCLI" msprop:Generator_ColumnPropNameInTable="CODCLIColumn" msprop:Generator_UserColumnName="CODCLI" type="xs:string" minOccurs="0" />
+              <xs:element name="NOMCLI" msprop:Generator_ColumnVarNameInTable="columnNOMCLI" msprop:Generator_ColumnPropNameInRow="NOMCLI" msprop:Generator_ColumnPropNameInTable="NOMCLIColumn" msprop:Generator_UserColumnName="NOMCLI" type="xs:string" minOccurs="0" />
+              <xs:element name="APECLI" msprop:Generator_ColumnVarNameInTable="columnAPECLI" msprop:Generator_ColumnPropNameInRow="APECLI" msprop:Generator_ColumnPropNameInTable="APECLIColumn" msprop:Generator_UserColumnName="APECLI" type="xs:string" minOccurs="0" />
+              <xs:element name="DIRCLI" msprop:Generator_ColumnVarNameInTable="columnDIRCLI" msprop:Generator_ColumnPropNameInRow="DIRCLI" msprop:Generator_ColumnPropNameInTable="DIRCLIColumn" msprop:Generator_UserColumnName="DIRCLI" type="xs:string" minOccurs="0" />
+              <xs:element name="SECCLI" msprop:Generator_ColumnVarNameInTable="columnSECCLI" msprop:Generator_ColumnPropNameInRow="SECCLI" msprop:Generator_ColumnPropNameInTable="SECCLIColumn" msprop:Generator_UserColumnName="SECCLI" type="xs:string" minOccurs="0" />
+              <xs:element name="CIUCLI" msprop:Generator_ColumnVarNameInTable="columnCIUCLI" msprop:Generator_ColumnPropNameInRow="CIUCLI" msprop:Generator_ColumnPropNameInTable="CIUCLIColumn" msprop:Generator_UserColumnName="CIUCLI" type="xs:string" minOccurs="0" />
+              <xs:element name="TELCLI" msprop:Generator_ColumnVarNameInTable="columnTELCLI" msprop:Generator_ColumnPropNameInRow="TELCLI" msprop:Generator_ColumnPropNameInTable="TELCLIColumn" msprop:Generator_UserColumnName="TELCLI" type="xs:string" minOccurs="0" />
+              <xs:element name="NUMFAXCLI" msprop:Generator_ColumnVarNameInTable="columnNUMFAXCLI" msprop:Generator_ColumnPropNameInRow="NUMFAXCLI" msprop:Generator_ColumnPropNameInTable="NUMFAXCLIColumn" msprop:Generator_UserColumnName="NUMFAXCLI" type="xs:string" minOccurs="0" />
+              <xs:element name="LIMCRECLI" msprop:Generator_ColumnVarNameInTable="columnLIMCRECLI" msprop:Generator_ColumnPropNameInRow="LIMCRECLI" msprop:Generator_ColumnPropNameInTable="LIMCRECLIColumn" msprop:Generator_UserColumnName="LIMCRECLI" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BALCLI" msprop:Generator_ColumnVarNameInTable="columnBALCLI" msprop:Generator_ColumnPropNameInRow="BALCLI" msprop:Generator_ColumnPropNameInTable="BALCLIColumn" msprop:Generator_UserColumnName="BALCLI" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0020_OBSCLI" msprop:Generator_ColumnVarNameInTable="column_OBSCLI" msprop:Generator_ColumnPropNameInRow="_OBSCLI" msprop:Generator_ColumnPropNameInTable="_OBSCLIColumn" msprop:Generator_UserColumnName=" OBSCLI" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
