@@ -106,5 +106,18 @@ namespace PresentacionFacturacion
             conCli.WindowState = FormWindowState.Maximized; //Ocupa todo el contenedor
             conCli.Show();
         }
+
+        private void menusalir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseas Salir?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void menureportes_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
