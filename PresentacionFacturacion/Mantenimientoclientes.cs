@@ -24,15 +24,15 @@ namespace PresentacionFacturacion
         {
             try
             {
-                string cmd = string.Format("select * from sftclie0 where codclie='{0}'", txtCodigo.Text.Trim());
+                string cmd = string.Format("select * from sftclie0 where codcli='{0}'", txtCodigo.Text.Trim());
 
                 DataSet Ds = Conexion_BD.Ejecutar(cmd);
 
-                txtNombre.Text = Ds.Tables[0].Rows[0]["nomclie"].ToString().Trim();
-                txtapellido.Text = Ds.Tables[0].Rows[0]["cedclie"].ToString().Trim();
-                txtsector.Text = Ds.Tables[0].Rows[0]["telclie"].ToString().Trim();
-                txtDireccion.Text = Ds.Tables[0].Rows[0]["dirclie"].ToString().Trim();
-                txtCiudad.Text = Ds.Tables[0].Rows[0]["mailclie"].ToString().Trim();
+                txtNombre.Text = Ds.Tables[0].Rows[0]["nomcli"].ToString().Trim();
+                txtapellido.Text = Ds.Tables[0].Rows[0]["apecli"].ToString().Trim();
+                txtsector.Text = Ds.Tables[0].Rows[0]["seccli"].ToString().Trim();
+                txtDireccion.Text = Ds.Tables[0].Rows[0]["dircli"].ToString().Trim();
+                txtCiudad.Text = Ds.Tables[0].Rows[0]["ciucli"].ToString().Trim();
 
                 encontrado = 1;
             }
@@ -68,10 +68,10 @@ namespace PresentacionFacturacion
             try
             {
                 string cmd = (encontrado == 0 ? string.Format(
-                    "insert into sftclie0 (codclie,nomclie,cedclie,telclie,dirclie,mailclie) values ('{0}','{1}','{2}','{3}','{4}','{5}')",
+                    "insert into sftclie0 (codcli,nomcli,apecli,seccli,dircli,ciucli) values ('{0}','{1}','{2}','{3}','{4}','{5}')",
                     txtCodigo.Text.Trim(), txtNombre.Text.Trim(), txtapellido.Text.Trim(), txtsector.Text.Trim(), txtDireccion.Text.Trim(), txtCiudad.Text.Trim())
                     : string.Format(
-                    "update sftclie0 set nomclie='{0}', cedclie='{1}', telclie='{2}', dirclie='{3}', mailclie='{4}' where codclie='{5}'",
+                    "update sftclie0 set nomcli='{0}', apecli='{1}', seccli='{2}', dircli='{3}', ciucli='{4}' where codcli='{5}'",
                     txtNombre.Text.Trim(), txtapellido.Text.Trim(), txtsector.Text.Trim(), txtDireccion.Text.Trim(), txtCiudad.Text.Trim(), txtCodigo.Text.Trim()));
 
                 DataSet Ds = Conexion_BD.Ejecutar(cmd);

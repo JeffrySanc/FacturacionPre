@@ -25,7 +25,7 @@
               <xs:element name="NUMFAXCLI" msprop:Generator_ColumnVarNameInTable="columnNUMFAXCLI" msprop:Generator_ColumnPropNameInRow="NUMFAXCLI" msprop:Generator_ColumnPropNameInTable="NUMFAXCLIColumn" msprop:Generator_UserColumnName="NUMFAXCLI" type="xs:string" minOccurs="0" />
               <xs:element name="LIMCRECLI" msprop:Generator_ColumnVarNameInTable="columnLIMCRECLI" msprop:Generator_ColumnPropNameInRow="LIMCRECLI" msprop:Generator_ColumnPropNameInTable="LIMCRECLIColumn" msprop:Generator_UserColumnName="LIMCRECLI" type="xs:decimal" minOccurs="0" />
               <xs:element name="BALCLI" msprop:Generator_ColumnVarNameInTable="columnBALCLI" msprop:Generator_ColumnPropNameInRow="BALCLI" msprop:Generator_ColumnPropNameInTable="BALCLIColumn" msprop:Generator_UserColumnName="BALCLI" type="xs:decimal" minOccurs="0" />
-              <xs:element name="_x0020_OBSCLI" msprop:Generator_ColumnVarNameInTable="column_OBSCLI" msprop:Generator_ColumnPropNameInRow="_OBSCLI" msprop:Generator_ColumnPropNameInTable="_OBSCLIColumn" msprop:Generator_UserColumnName=" OBSCLI" type="xs:string" minOccurs="0" />
+              <xs:element name="OBSCLI" msprop:Generator_ColumnVarNameInTable="columnOBSCLI" msprop:Generator_ColumnPropNameInRow="OBSCLI" msprop:Generator_ColumnPropNameInTable="OBSCLIColumn" msprop:Generator_UserColumnName="OBSCLI" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

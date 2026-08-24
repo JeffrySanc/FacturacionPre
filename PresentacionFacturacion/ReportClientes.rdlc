@@ -782,11 +782,11 @@
       </Query>
       <Fields>
         <Field Name="CODCLI">
-          <DataField> CODCLI</DataField>
+          <DataField>CODCLI</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="NOMCLI">
-          <DataField> NOMCLI</DataField>
+          <DataField>NOMCLI</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="APECLI">
@@ -798,11 +798,11 @@
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="SECCLI">
-          <DataField> SECCLI</DataField>
+          <DataField>SECCLI</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="CIUCLI">
-          <DataField> CIUCLI</DataField>
+          <DataField>CIUCLI</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="TELCLI">
@@ -810,7 +810,7 @@
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="NUMFAXCLI">
-          <DataField> NUMFAXCLI</DataField>
+          <DataField>NUMFAXCLI</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="LIMCRECLI">
@@ -822,7 +822,7 @@
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="OBSCLI">
-          <DataField> OBSCLI</DataField>
+          <DataField>OBSCLI</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

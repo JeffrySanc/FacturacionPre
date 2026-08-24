@@ -117,7 +117,10 @@ namespace PresentacionFacturacion
 
         private void menureportes_Click(object sender, EventArgs e)
         {
-
+            Form repCli = new ReportesClientes();
+            repCli.MdiParent = this;
+            repCli.WindowState = FormWindowState.Maximized;
+            repCli.Show();
         }
     }
 }

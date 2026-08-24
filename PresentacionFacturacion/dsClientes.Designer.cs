@@ -299,7 +299,7 @@ namespace PresentacionFacturacion {
             
             private global::System.Data.DataColumn columnBALCLI;
             
-            private global::System.Data.DataColumn column_OBSCLI;
+            private global::System.Data.DataColumn columnOBSCLI;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -416,9 +416,9 @@ namespace PresentacionFacturacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn _OBSCLIColumn {
+            public global::System.Data.DataColumn OBSCLIColumn {
                 get {
-                    return this.column_OBSCLI;
+                    return this.columnOBSCLI;
                 }
             }
             
@@ -459,7 +459,7 @@ namespace PresentacionFacturacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public _sftclie0Row Add_sftclie0Row(string CODCLI, string NOMCLI, string APECLI, string DIRCLI, string SECCLI, string CIUCLI, string TELCLI, string NUMFAXCLI, decimal LIMCRECLI, decimal BALCLI, string _OBSCLI) {
+            public _sftclie0Row Add_sftclie0Row(string CODCLI, string NOMCLI, string APECLI, string DIRCLI, string SECCLI, string CIUCLI, string TELCLI, string NUMFAXCLI, decimal LIMCRECLI, decimal BALCLI, string OBSCLI) {
                 _sftclie0Row row_sftclie0Row = ((_sftclie0Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CODCLI,
@@ -472,7 +472,7 @@ namespace PresentacionFacturacion {
                         NUMFAXCLI,
                         LIMCRECLI,
                         BALCLI,
-                        _OBSCLI};
+                        OBSCLI};
                 row_sftclie0Row.ItemArray = columnValuesArray;
                 this.Rows.Add(row_sftclie0Row);
                 return row_sftclie0Row;
@@ -505,7 +505,7 @@ namespace PresentacionFacturacion {
                 this.columnNUMFAXCLI = base.Columns["NUMFAXCLI"];
                 this.columnLIMCRECLI = base.Columns["LIMCRECLI"];
                 this.columnBALCLI = base.Columns["BALCLI"];
-                this.column_OBSCLI = base.Columns[" OBSCLI"];
+                this.columnOBSCLI = base.Columns["OBSCLI"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -531,8 +531,8 @@ namespace PresentacionFacturacion {
                 base.Columns.Add(this.columnLIMCRECLI);
                 this.columnBALCLI = new global::System.Data.DataColumn("BALCLI", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBALCLI);
-                this.column_OBSCLI = new global::System.Data.DataColumn(" OBSCLI", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.column_OBSCLI);
+                this.columnOBSCLI = new global::System.Data.DataColumn("OBSCLI", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOBSCLI);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -835,17 +835,17 @@ namespace PresentacionFacturacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string _OBSCLI {
+            public string OBSCLI {
                 get {
                     try {
-                        return ((string)(this[this.table_sftclie0._OBSCLIColumn]));
+                        return ((string)(this[this.table_sftclie0.OBSCLIColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \' OBSCLI\' de la tabla \' sftclie0\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.table_sftclie0._OBSCLIColumn] = value;
+                    this[this.table_sftclie0.OBSCLIColumn] = value;
                 }
             }
             
@@ -971,14 +971,14 @@ namespace PresentacionFacturacion {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Is_OBSCLINull() {
-                return this.IsNull(this.table_sftclie0._OBSCLIColumn);
+            public bool IsOBSCLINull() {
+                return this.IsNull(this.table_sftclie0.OBSCLIColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Set_OBSCLINull() {
-                this[this.table_sftclie0._OBSCLIColumn] = global::System.Convert.DBNull;
+            public void SetOBSCLINull() {
+                this[this.table_sftclie0.OBSCLIColumn] = global::System.Convert.DBNull;
             }
         }
         

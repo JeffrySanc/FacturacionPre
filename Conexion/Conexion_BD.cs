@@ -1,28 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace Conexion
 {
-   public class Conexion_BD
+    public class Conexion_BD
     {
+        public static DataSet Ejecutar(string cmd)
+        {
+            SqlConnection conexion = new SqlConnection(
+                @"Data Source=DESKTOP-LQA6N6S\SQLEXPRESS;Initial Catalog=dbFactura;Integrated Security=True");
 
-            public static DataSet Ejecutar(string cmd)
+            try
             {
-            SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-P3T7POF; Initial Catalog = dbFactura; Integrated Security = True");
+                conexion.Open();
 
-            conexion.Open();
+                DataSet ds = new DataSet();
 
-                DataSet Ds = new DataSet();
-                SqlDataAdapter DA = new SqlDataAdapter(cmd, conexion);
-                DA.Fill(Ds);
-                conexion.Close();
+                SqlDataAdapter da = new SqlDataAdapter(cmd, conexion);
+                da.Fill(ds);
 
-                return Ds;
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error de conexión con la base de datos: " + ex.Message);
+            }
+            finally
+            {
+                if (conexion.State == ConnectionState.Open)
+                    conexion.Close();
+            }
         }
     }
 }

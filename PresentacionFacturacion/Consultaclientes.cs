@@ -39,7 +39,7 @@ namespace PresentacionFacturacion
                 try
                 {
                     DataSet ds;
-                    string cmd = "select * from sftclie0 where nomclie like " + "('%" + txtconsulta.Text.Trim() + "%')";
+                    string cmd = "select * from sftclie0 where nomcli like " + "('%" + txtconsulta.Text.Trim() + "%')";
                     ds = Conexion_BD.Ejecutar(cmd);
                     dataGridView1.DataSource = ds.Tables[0];
                 }
