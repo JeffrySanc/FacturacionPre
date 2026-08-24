@@ -63,10 +63,12 @@ namespace PresentacionFacturacion
             {
 
 
-                string cmd = (encontrado == 0 ? string.Format("insert into sftunid0 (coduni,desuni) " +
-                    "values ('{0}', '{1}')", txtcodigo_uni.Text.Trim(), txtdescripcion_uni.Text.Trim())
-                     : string.Format("update sftunid0 set desuni = '{0}' where coduni = '{1}'",
-                     txtdescripcion_uni.Text.Trim(), txtcodigo_uni.Text.Trim()));
+                string fechaguardado = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                string cmd = (encontrado == 0 ? string.Format("insert into sftunid0 (coduni,desuni,fechaguardado) " +
+                    "values ('{0}', '{1}', '{2}')", txtcodigo_uni.Text.Trim(), txtdescripcion_uni.Text.Trim(), fechaguardado)
+                     : string.Format("update sftunid0 set desuni = '{0}', fechaguardado = '{2}' where coduni = '{1}'",
+                     txtdescripcion_uni.Text.Trim(), txtcodigo_uni.Text.Trim(), fechaguardado));
                 DataSet ds = Conexion_BD.Ejecutar(cmd);
 
                 string letrero = (encontrado == 0 ? "Registro guardado correctamente..." :

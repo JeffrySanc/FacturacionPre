@@ -67,12 +67,14 @@ namespace PresentacionFacturacion
         {
             try
             {
+                string fechaguardado = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
                 string cmd = (encontrado == 0 ? string.Format(
-                    "insert into sftclie0 (codcli,nomcli,apecli,seccli,dircli,ciucli) values ('{0}','{1}','{2}','{3}','{4}','{5}')",
-                    txtCodigo.Text.Trim(), txtNombre.Text.Trim(), txtapellido.Text.Trim(), txtsector.Text.Trim(), txtDireccion.Text.Trim(), txtCiudad.Text.Trim())
+                    "insert into sftclie0 (codcli,nomcli,apecli,seccli,dircli,ciucli,fechaguardado) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')",
+                    txtCodigo.Text.Trim(), txtNombre.Text.Trim(), txtapellido.Text.Trim(), txtsector.Text.Trim(), txtDireccion.Text.Trim(), txtCiudad.Text.Trim(), fechaguardado)
                     : string.Format(
-                    "update sftclie0 set nomcli='{0}', apecli='{1}', seccli='{2}', dircli='{3}', ciucli='{4}' where codcli='{5}'",
-                    txtNombre.Text.Trim(), txtapellido.Text.Trim(), txtsector.Text.Trim(), txtDireccion.Text.Trim(), txtCiudad.Text.Trim(), txtCodigo.Text.Trim()));
+                    "update sftclie0 set nomcli='{0}', apecli='{1}', seccli='{2}', dircli='{3}', ciucli='{4}', fechaguardado='{6}' where codcli='{5}'",
+                    txtNombre.Text.Trim(), txtapellido.Text.Trim(), txtsector.Text.Trim(), txtDireccion.Text.Trim(), txtCiudad.Text.Trim(), txtCodigo.Text.Trim(), fechaguardado));
 
                 DataSet Ds = Conexion_BD.Ejecutar(cmd);
 

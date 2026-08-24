@@ -60,10 +60,12 @@ namespace PresentacionFacturacion
 
             try
             {
-                string cmd = (encontrado == 0 ? string.Format("insert into sftarti0 (codart,desart,preart) values ('{0}','{1}','{2}')", 
-                    txtcodigo.Text.Trim(), txtnombre.Text.Trim(), txtprecio.Text.Trim()) : string.Format
-                    ("update sftarti0 set desart='{0}', preart='{1}' where codart='{2}'", txtnombre.Text.Trim(),txtprecio.Text.Trim(), 
-                   txtcodigo.Text.Trim()));
+                string fechaguardado = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+                string cmd = (encontrado == 0 ? string.Format("insert into sftarti0 (codart,desart,preart,fechaguardado) values ('{0}','{1}','{2}','{3}')",
+                    txtcodigo.Text.Trim(), txtnombre.Text.Trim(), txtprecio.Text.Trim(), fechaguardado) : string.Format
+                    ("update sftarti0 set desart='{0}', preart='{1}', fechaguardado='{3}' where codart='{2}'", txtnombre.Text.Trim(),txtprecio.Text.Trim(),
+                   txtcodigo.Text.Trim(), fechaguardado));
                
                 DataSet Ds = Conexion_BD.Ejecutar(cmd);
 

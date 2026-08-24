@@ -20,6 +20,8 @@ namespace PresentacionFacturacion
 
         private void Facturacion_Load(object sender, EventArgs e)
         {
+                dateTimePicker1.Value = DateTime.Now;
+
                 dataGridDetalle.Columns.Add("Codigo", "Código");
                 dataGridDetalle.Columns.Add("Descripcion", "Descripción");
                 dataGridDetalle.Columns.Add("Precio", "Precio");
