@@ -14,9 +14,17 @@ namespace PresentacionFacturacion
 {
     public partial class ReportesClientes : Form
     {
+        private readonly string usuario;
+
         public ReportesClientes()
+            : this("Administrador")
+        {
+        }
+
+        public ReportesClientes(string usuario)
         {
             InitializeComponent();
+            this.usuario = string.IsNullOrWhiteSpace(usuario) ? "Administrador" : usuario.Trim();
         }
 
         private void ReporteClientes_Load(object sender, EventArgs e)
@@ -25,10 +33,14 @@ namespace PresentacionFacturacion
             {
                 DataSet ds = Conexion_BD.Ejecutar("select * from sftclie0");
                 this.dsClientes._sftclie0.Merge(ds.Tables[0]);
+
+                this.reportViewer1.LocalReport.SetParameters(
+                    new Microsoft.Reporting.WinForms.ReportParameter("Usuario", this.usuario));
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar los datos del reporte: " + ex.Message);
+                MessageBox.Show("Error al cargar los datos del reporte: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             this.reportViewer1.RefreshReport();

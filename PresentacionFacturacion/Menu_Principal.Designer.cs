@@ -190,6 +190,14 @@ namespace PresentacionFacturacion
             this.menureportes.Text = "Reportes";
             this.menureportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.menureportes.Click += new System.EventHandler(this.menureportes_Click);
+            //
+            // clientesToolStripMenuItem2
+            //
+            this.clientesToolStripMenuItem2.Click += new System.EventHandler(this.clientesToolStripMenuItem2_Click);
+            //
+            // artículosToolStripMenuItem1
+            //
+            this.artículosToolStripMenuItem1.Click += new System.EventHandler(this.artículosToolStripMenuItem1_Click);
             // 
             // menusalir
             // 
@@ -272,12 +280,13 @@ namespace PresentacionFacturacion
             this.artículosToolStripMenuItem1.Name = "artículosToolStripMenuItem1";
             this.artículosToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.artículosToolStripMenuItem1.Text = "Artículos";
-            // 
+            //
             // ventasPorFechaToolStripMenuItem
-            // 
+            //
             this.ventasPorFechaToolStripMenuItem.Name = "ventasPorFechaToolStripMenuItem";
             this.ventasPorFechaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.ventasPorFechaToolStripMenuItem.Text = "Ventas por Fecha";
+            this.ventasPorFechaToolStripMenuItem.Click += new System.EventHandler(this.ventasPorFechaToolStripMenuItem_Click);
             // 
             // Menu_Principal
             // 

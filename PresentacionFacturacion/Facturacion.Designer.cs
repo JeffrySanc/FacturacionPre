@@ -337,6 +337,7 @@ namespace PresentacionFacturacion
             this.btnguardar.TabIndex = 35;
             this.btnguardar.Text = "Guardar";
             this.btnguardar.UseVisualStyleBackColor = false;
+            this.btnguardar.Click += new System.EventHandler(this.btnguardar_Click);
             // 
             // txtsubtotal
             // 

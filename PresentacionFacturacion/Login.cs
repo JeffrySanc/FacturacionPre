@@ -38,14 +38,22 @@ namespace PresentacionFacturacion
         {
             try
             {
-                string usuario = txtusuario.Text;
+                string usuario = txtusuario.Text.Trim();
                 string clave = txtclave.Text;
 
-                string cmd = "SELECT * FROM sftusua0 " +
-                             "WHERE usuario = '" + usuario + "' " +
-                             "AND password = '" + clave + "'";
+                if (usuario.Length == 0 || clave.Length == 0)
+                {
+                    MessageBox.Show("Debe indicar usuario y contraseña.",
+                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                DataSet ds = Conexion_BD.Ejecutar(cmd);
+                string cmd = "SELECT nomusu FROM sftusua0 " +
+                             "WHERE usuario = @usuario AND password = @clave";
+
+                DataSet ds = Conexion_BD.Ejecutar(cmd,
+                    new System.Data.SqlClient.SqlParameter("@usuario", usuario),
+                    new System.Data.SqlClient.SqlParameter("@clave", Conexion.Seguridad.HashSHA256(clave)));
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,35 +15,60 @@ namespace PresentacionFacturacion
 {
     public partial class MantenimientoCliente : Mantenimientos
     {
+        public int encontrado = 0;
+
         public MantenimientoCliente()
         {
             InitializeComponent();
         }
-        public int encontrado = 0;
+
+        private static decimal DecimalDe(TextBox caja)
+        {
+            decimal valor;
+            return decimal.TryParse(caja.Text.Trim(), out valor) ? valor : 0m;
+        }
 
         public override void Buscar()
         {
             try
             {
-                string cmd = string.Format("select * from sftclie0 where codcli='{0}'", txtCodigo.Text.Trim());
+                DataSet ds = Conexion_BD.Ejecutar(
+                    "select * from sftclie0 where codcli = @codigo",
+                    new SqlParameter("@codigo", txtCodigo.Text.Trim()));
 
-                DataSet Ds = Conexion_BD.Ejecutar(cmd);
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    encontrado = 0;
+                    MessageBox.Show("El cliente " + txtCodigo.Text.Trim() + " no existe...",
+                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    DataRow fila = ds.Tables[0].Rows[0];
+                    txtNombre.Text = fila["nomcli"].ToString().Trim();
+                    txtapellido.Text = fila["apecli"].ToString().Trim();
+                    txtTelefono.Text = fila["telcli"].ToString().Trim();
+                    txtcorreo.Text = fila["numfaxcli"].ToString().Trim();
+                    txtDireccion.Text = fila["dircli"].ToString().Trim();
+                    txtsector.Text = fila["seccli"].ToString().Trim();
+                    txtCiudad.Text = fila["ciucli"].ToString().Trim();
+                    txtlimite.Text = fila["limcrecli"].ToString().Trim();
+                    txtbalance.Text = fila["balcli"].ToString().Trim();
+                    txtobservaciones.Text = fila["obscli"].ToString().Trim();
 
-                txtNombre.Text = Ds.Tables[0].Rows[0]["nomcli"].ToString().Trim();
-                txtapellido.Text = Ds.Tables[0].Rows[0]["apecli"].ToString().Trim();
-                txtsector.Text = Ds.Tables[0].Rows[0]["seccli"].ToString().Trim();
-                txtDireccion.Text = Ds.Tables[0].Rows[0]["dircli"].ToString().Trim();
-                txtCiudad.Text = Ds.Tables[0].Rows[0]["ciucli"].ToString().Trim();
-
-                encontrado = 1;
+                    encontrado = 1;
+                }
             }
-            catch (Exception)
+            catch (Exception error)
             {
                 encontrado = 0;
+                MessageBox.Show("Ha ocurrido un error al buscar: " + error.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             txtNombre.Focus();
-            btneliminar.Enabled = (encontrado == 1 ? true : false);
+            btneliminar.Enabled = (encontrado == 1);
+            btnguardar.Enabled = true;
         }
 
         public override void Consultar()
@@ -54,45 +80,150 @@ namespace PresentacionFacturacion
                 if (conCli.DialogResult == DialogResult.OK)
                 {
                     txtCodigo.Text = conCli.dataGridView1.Rows[conCli.dataGridView1.CurrentRow.Index].Cells[0].Value.ToString();
-                    btnbuscar.Focus();
+                    Buscar();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al abrir consulta: " + ex.Message);
+                MessageBox.Show("Error al abrir consulta: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public override void Eliminar()
+        {
+            try
+            {
+                DialogResult respuesta = MessageBox.Show(
+                    "¿Desea eliminar el cliente " + txtCodigo.Text.Trim() + "?",
+                    "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2);
+
+                if (respuesta != DialogResult.Yes)
+                    return;
+
+                Conexion_BD.EjecutarComando(
+                    "delete from sftclie0 where codcli = @codigo",
+                    new SqlParameter("@codigo", txtCodigo.Text.Trim()));
+
+                MessageBox.Show("Registro eliminado correctamente...",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LimpiarCampos();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Ha ocurrido un error al eliminar: " + error.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         public override bool Guardar()
         {
+            if (txtCodigo.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Debe indicar el código del cliente.",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCodigo.Focus();
+                return false;
+            }
+
+            if (txtNombre.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Debe indicar el nombre del cliente.",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNombre.Focus();
+                return false;
+            }
+
             try
             {
-                string fechaguardado = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                DateTime fechaguardado = DateTime.Now;
 
-                string cmd = (encontrado == 0 ? string.Format(
-                    "insert into sftclie0 (codcli,nomcli,apecli,seccli,dircli,ciucli,fechaguardado) values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}')",
-                    txtCodigo.Text.Trim(), txtNombre.Text.Trim(), txtapellido.Text.Trim(), txtsector.Text.Trim(), txtDireccion.Text.Trim(), txtCiudad.Text.Trim(), fechaguardado)
-                    : string.Format(
-                    "update sftclie0 set nomcli='{0}', apecli='{1}', seccli='{2}', dircli='{3}', ciucli='{4}', fechaguardado='{6}' where codcli='{5}'",
-                    txtNombre.Text.Trim(), txtapellido.Text.Trim(), txtsector.Text.Trim(), txtDireccion.Text.Trim(), txtCiudad.Text.Trim(), txtCodigo.Text.Trim(), fechaguardado));
+                if (encontrado == 0)
+                {
+                    Conexion_BD.EjecutarComando(
+                        "insert into sftclie0 (codcli,nomcli,apecli,telcli,numfaxcli,dircli,seccli,ciucli,limcrecli,balcli,obscli,fechaguardado) " +
+                        "values (@cod,@nom,@ape,@tel,@cor,@dir,@sec,@ciu,@lim,@bal,@obs,@fg)",
+                        new SqlParameter("@cod", txtCodigo.Text.Trim()),
+                        new SqlParameter("@nom", txtNombre.Text.Trim()),
+                        new SqlParameter("@ape", txtapellido.Text.Trim()),
+                        new SqlParameter("@tel", txtTelefono.Text.Trim()),
+                        new SqlParameter("@cor", txtcorreo.Text.Trim()),
+                        new SqlParameter("@dir", txtDireccion.Text.Trim()),
+                        new SqlParameter("@sec", txtsector.Text.Trim()),
+                        new SqlParameter("@ciu", txtCiudad.Text.Trim()),
+                        new SqlParameter("@lim", DecimalDe(txtlimite)),
+                        new SqlParameter("@bal", DecimalDe(txtbalance)),
+                        new SqlParameter("@obs", txtobservaciones.Text.Trim()),
+                        new SqlParameter("@fg", fechaguardado));
+                }
+                else
+                {
+                    Conexion_BD.EjecutarComando(
+                        "update sftclie0 set nomcli = @nom, apecli = @ape, telcli = @tel, numfaxcli = @cor, " +
+                        "dircli = @dir, seccli = @sec, ciucli = @ciu, limcrecli = @lim, balcli = @bal, " +
+                        "obscli = @obs, fechaguardado = @fg where codcli = @cod",
+                        new SqlParameter("@nom", txtNombre.Text.Trim()),
+                        new SqlParameter("@ape", txtapellido.Text.Trim()),
+                        new SqlParameter("@tel", txtTelefono.Text.Trim()),
+                        new SqlParameter("@cor", txtcorreo.Text.Trim()),
+                        new SqlParameter("@dir", txtDireccion.Text.Trim()),
+                        new SqlParameter("@sec", txtsector.Text.Trim()),
+                        new SqlParameter("@ciu", txtCiudad.Text.Trim()),
+                        new SqlParameter("@lim", DecimalDe(txtlimite)),
+                        new SqlParameter("@bal", DecimalDe(txtbalance)),
+                        new SqlParameter("@obs", txtobservaciones.Text.Trim()),
+                        new SqlParameter("@fg", fechaguardado),
+                        new SqlParameter("@cod", txtCodigo.Text.Trim()));
+                }
 
-                DataSet Ds = Conexion_BD.Ejecutar(cmd);
+                MessageBox.Show(encontrado == 0 ?
+                    "Registro guardado correctamente..." :
+                    "Registro actualizado correctamente...",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                string letrero = (encontrado == 0 ? "Registro Guardado Correctamente..." : "Registro Actualizado Correctamente...");
-
-                MessageBox.Show(letrero);
+                encontrado = 1;
+                btneliminar.Enabled = true;
             }
             catch (Exception error)
             {
-                MessageBox.Show("Ha ocurrido un error " + error.Message);
+                MessageBox.Show("Ha ocurrido un error al guardar: " + error.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
-
-            btneliminar.Enabled = false;
 
             btnguardar.Enabled = false;
             txtNombre.Focus();
 
             return true;
+        }
+
+        private void SoloDecimal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            bool valido = char.IsControl(c) || char.IsDigit(c) || (c == '.' &&
+                !((TextBox)sender).Text.Contains("."));
+            e.Handled = !valido;
+        }
+
+        private void LimpiarCampos()
+        {
+            txtCodigo.Clear();
+            txtNombre.Clear();
+            txtapellido.Clear();
+            txtTelefono.Clear();
+            txtcorreo.Clear();
+            txtDireccion.Clear();
+            txtsector.Clear();
+            txtCiudad.Clear();
+            txtlimite.Clear();
+            txtbalance.Clear();
+            txtobservaciones.Clear();
+            encontrado = 0;
+            btneliminar.Enabled = false;
+            btnguardar.Enabled = false;
+            txtCodigo.Focus();
         }
 
         private void MantenimientoCliente_Load(object sender, EventArgs e)

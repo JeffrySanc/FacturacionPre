@@ -51,11 +51,6 @@ namespace PresentacionFacturacion
 
         }
 
-        private void articulosToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void menucolor_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -117,10 +112,31 @@ namespace PresentacionFacturacion
 
         private void menureportes_Click(object sender, EventArgs e)
         {
-            Form repCli = new ReportesClientes();
+
+        }
+
+        private void clientesToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Form repCli = new ReportesClientes(lblusuario.Text);
             repCli.MdiParent = this;
             repCli.WindowState = FormWindowState.Maximized;
             repCli.Show();
+        }
+
+        private void artículosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form repArt = new ReportesArticulos(lblusuario.Text);
+            repArt.MdiParent = this;
+            repArt.WindowState = FormWindowState.Maximized;
+            repArt.Show();
+        }
+
+        private void ventasPorFechaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form repVen = new ReportesVentasFecha(lblusuario.Text);
+            repVen.MdiParent = this;
+            repVen.WindowState = FormWindowState.Maximized;
+            repVen.Show();
         }
     }
 }

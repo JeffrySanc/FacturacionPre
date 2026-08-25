@@ -165,6 +165,18 @@
     <Compile Include="ReportesClientes.Designer.cs">
       <DependentUpon>ReportesClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportesArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportesArticulos.Designer.cs">
+      <DependentUpon>ReportesArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportesVentasFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportesVentasFecha.Designer.cs">
+      <DependentUpon>ReportesVentasFecha.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ConsultaArticulos.resx">
       <DependentUpon>ConsultaArticulos.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +214,8 @@
       <DependentUpon>Menu_Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportClientes.rdlc" />
+    <EmbeddedResource Include="ReportArticulos.rdlc" />
+    <EmbeddedResource Include="ReportVentasFechas.rdlc" />
     <EmbeddedResource Include="ReportesClientes.resx">
       <DependentUpon>ReportesClientes.cs</DependentUpon>
     </EmbeddedResource>

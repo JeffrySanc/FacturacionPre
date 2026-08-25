@@ -36,18 +36,18 @@ namespace PresentacionFacturacion
             {
                 try
                 {
-                    DataSet ds;
                     string cmd = "select codart as 'Código', desart as 'Descripción', " +
                                  "preart as 'Precio', exiactart as 'Existencia' " +
-                                 "from sftarti0 where desart like " +
-                                 "('%" + txtconsulta.Text.Trim() + "%')"
-                                 ;
-                    ds = Conexion_BD.Ejecutar(cmd);
+                                 "from sftarti0 where desart like @patron";
+
+                    DataSet ds = Conexion_BD.Ejecutar(cmd,
+                        new System.Data.SqlClient.SqlParameter("@patron", "%" + txtconsulta.Text.Trim() + "%"));
                     dataGridView1.DataSource = ds.Tables[0];
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Ha ocurrido un error...");
+                    MessageBox.Show("Ha ocurrido un error al buscar: " + ex.Message,
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
