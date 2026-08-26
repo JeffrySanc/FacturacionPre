@@ -35,23 +35,25 @@ namespace PresentacionFacturacion
             this.articulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unidadesDeMedidasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuprocesos = new FontAwesome.Sharp.IconMenuItem();
             this.facturacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuconsultas = new FontAwesome.Sharp.IconMenuItem();
             this.clientesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.artículosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unidadesDeMedidasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menureportes = new FontAwesome.Sharp.IconMenuItem();
+            this.clientesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.artículosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ventasPorFechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuconfiguraciones = new FontAwesome.Sharp.IconMenuItem();
             this.menusalir = new FontAwesome.Sharp.IconMenuItem();
             this.menucolor = new System.Windows.Forms.MenuStrip();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblusuario = new System.Windows.Forms.Label();
-            this.clientesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.artículosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ventasPorFechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,13 +66,13 @@ namespace PresentacionFacturacion
             this.menuprocesos,
             this.menuconsultas,
             this.menureportes,
+            this.menuconfiguraciones,
             this.menusalir});
             this.menu.Location = new System.Drawing.Point(0, 82);
             this.menu.Name = "menu";
             this.menu.Size = new System.Drawing.Size(1080, 81);
             this.menu.TabIndex = 1;
             this.menu.Text = "menuStrip1";
-            this.menu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menu_ItemClicked);
             // 
             // menuMantenedor
             // 
@@ -78,7 +80,8 @@ namespace PresentacionFacturacion
             this.clientesToolStripMenuItem,
             this.articulosToolStripMenuItem,
             this.unidadesDeMedidasToolStripMenuItem,
-            this.usuarioToolStripMenuItem});
+            this.usuarioToolStripMenuItem,
+            this.configuracionToolStripMenuItem});
             this.menuMantenedor.IconChar = FontAwesome.Sharp.IconChar.ScrewdriverWrench;
             this.menuMantenedor.IconColor = System.Drawing.Color.Black;
             this.menuMantenedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -117,6 +120,13 @@ namespace PresentacionFacturacion
             this.usuarioToolStripMenuItem.Text = "Usuario";
             this.usuarioToolStripMenuItem.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
+            // configuracionToolStripMenuItem
+            // 
+            this.configuracionToolStripMenuItem.Name = "configuracionToolStripMenuItem";
+            this.configuracionToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
+            this.configuracionToolStripMenuItem.Text = "Configuración";
+            this.configuracionToolStripMenuItem.Click += new System.EventHandler(this.configuracionToolStripMenuItem_Click);
+            // 
             // menuprocesos
             // 
             this.menuprocesos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -130,7 +140,6 @@ namespace PresentacionFacturacion
             this.menuprocesos.Size = new System.Drawing.Size(99, 77);
             this.menuprocesos.Text = "Procesos";
             this.menuprocesos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.menuprocesos.Click += new System.EventHandler(this.iconMenuItem1_Click);
             // 
             // facturacionToolStripMenuItem
             // 
@@ -199,15 +208,47 @@ namespace PresentacionFacturacion
             this.menureportes.Size = new System.Drawing.Size(98, 77);
             this.menureportes.Text = "Reportes";
             this.menureportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.menureportes.Click += new System.EventHandler(this.menureportes_Click);
-            //
+            // 
             // clientesToolStripMenuItem2
-            //
+            // 
+            this.clientesToolStripMenuItem2.Name = "clientesToolStripMenuItem2";
+            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(249, 34);
+            this.clientesToolStripMenuItem2.Text = "Clientes";
             this.clientesToolStripMenuItem2.Click += new System.EventHandler(this.clientesToolStripMenuItem2_Click);
-            //
+            // 
+            // facturaToolStripMenuItem
+            // 
+            this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
+            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(249, 34);
+            this.facturaToolStripMenuItem.Text = "Factura";
+            this.facturaToolStripMenuItem.Click += new System.EventHandler(this.facturaToolStripMenuItem_Click);
+            // 
             // artículosToolStripMenuItem1
-            //
+            // 
+            this.artículosToolStripMenuItem1.Name = "artículosToolStripMenuItem1";
+            this.artículosToolStripMenuItem1.Size = new System.Drawing.Size(249, 34);
+            this.artículosToolStripMenuItem1.Text = "Artículos";
             this.artículosToolStripMenuItem1.Click += new System.EventHandler(this.artículosToolStripMenuItem1_Click);
+            // 
+            // ventasPorFechaToolStripMenuItem
+            // 
+            this.ventasPorFechaToolStripMenuItem.Name = "ventasPorFechaToolStripMenuItem";
+            this.ventasPorFechaToolStripMenuItem.Size = new System.Drawing.Size(249, 34);
+            this.ventasPorFechaToolStripMenuItem.Text = "Ventas por Fecha";
+            this.ventasPorFechaToolStripMenuItem.Click += new System.EventHandler(this.ventasPorFechaToolStripMenuItem_Click);
+            // 
+            // menuconfiguraciones
+            // 
+            this.menuconfiguraciones.IconChar = FontAwesome.Sharp.IconChar.Cog;
+            this.menuconfiguraciones.IconColor = System.Drawing.Color.Black;
+            this.menuconfiguraciones.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.menuconfiguraciones.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.menuconfiguraciones.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menuconfiguraciones.Name = "menuconfiguraciones";
+            this.menuconfiguraciones.Size = new System.Drawing.Size(156, 77);
+            this.menuconfiguraciones.Text = "Configuraciones";
+            this.menuconfiguraciones.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.menuconfiguraciones.Click += new System.EventHandler(this.iconMenuItem1_Click_1);
             // 
             // menusalir
             // 
@@ -234,7 +275,6 @@ namespace PresentacionFacturacion
             this.menucolor.Size = new System.Drawing.Size(1080, 82);
             this.menucolor.TabIndex = 2;
             this.menucolor.Text = "menuStrip2";
-            this.menucolor.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menucolor_ItemClicked);
             // 
             // label1
             // 
@@ -247,7 +287,6 @@ namespace PresentacionFacturacion
             this.label1.Size = new System.Drawing.Size(313, 32);
             this.label1.TabIndex = 3;
             this.label1.Text = "Sistema de Facturación";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -271,33 +310,6 @@ namespace PresentacionFacturacion
             this.lblusuario.Size = new System.Drawing.Size(64, 20);
             this.lblusuario.TabIndex = 5;
             this.lblusuario.Text = "Usuario";
-            this.lblusuario.Click += new System.EventHandler(this.lblusuario_Click);
-            // 
-            // clientesToolStripMenuItem2
-            // 
-            this.clientesToolStripMenuItem2.Name = "clientesToolStripMenuItem2";
-            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(270, 34);
-            this.clientesToolStripMenuItem2.Text = "Clientes";
-            // 
-            // facturaToolStripMenuItem
-            // 
-            this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
-            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.facturaToolStripMenuItem.Text = "Factura";
-            this.facturaToolStripMenuItem.Click += new System.EventHandler(this.facturaToolStripMenuItem_Click);
-            // 
-            // artículosToolStripMenuItem1
-            // 
-            this.artículosToolStripMenuItem1.Name = "artículosToolStripMenuItem1";
-            this.artículosToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
-            this.artículosToolStripMenuItem1.Text = "Artículos";
-            //
-            // ventasPorFechaToolStripMenuItem
-            //
-            this.ventasPorFechaToolStripMenuItem.Name = "ventasPorFechaToolStripMenuItem";
-            this.ventasPorFechaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.ventasPorFechaToolStripMenuItem.Text = "Ventas por Fecha";
-            this.ventasPorFechaToolStripMenuItem.Click += new System.EventHandler(this.ventasPorFechaToolStripMenuItem_Click);
             // 
             // Menu_Principal
             // 
@@ -313,6 +325,7 @@ namespace PresentacionFacturacion
             this.Name = "Menu_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu_Principal";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_Principal_FormClosing);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.ResumeLayout(false);
@@ -345,5 +358,7 @@ namespace PresentacionFacturacion
         private System.Windows.Forms.ToolStripMenuItem artículosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ventasPorFechaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem configuracionToolStripMenuItem;
+        private FontAwesome.Sharp.IconMenuItem menuconfiguraciones;
     }
 }

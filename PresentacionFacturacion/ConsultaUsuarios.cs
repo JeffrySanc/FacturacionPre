@@ -24,9 +24,8 @@ namespace PresentacionFacturacion
             {
                 try
                 {
-                    string cmd = "select * from sftusua0 where nomusu like @patron or usuario like @patron";
-                    DataSet ds = Conexion_BD.Ejecutar(cmd,
-                        new System.Data.SqlClient.SqlParameter("@patron", "%" + txtconsulta.Text.Trim() + "%"));
+                    string cmd = "select * from sftusua0 where nomusu like '%" + txtconsulta.Text.Trim() + "%' or usuario like '%" + txtconsulta.Text.Trim() + "%'";
+                    DataSet ds = Conexion_BD.Ejecutar(cmd);
                     dataGridView1.DataSource = ds.Tables[0];
                 }
                 catch (Exception ex)

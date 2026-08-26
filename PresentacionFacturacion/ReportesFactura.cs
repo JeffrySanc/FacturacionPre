@@ -63,8 +63,7 @@ namespace PresentacionFacturacion
                     "select f.numfac, f.fecfac, f.codcli, c.nomcli, c.apecli, c.dircli, c.telcli, " +
                     "f.subtot, f.itbis, f.total " +
                     "from sftfact0 f left join sftclie0 c on f.codcli = c.codcli " +
-                    "where f.numfac = @numfac",
-                    new SqlParameter("@numfac", numeroFactura));
+                    "where f.numfac = " + numeroFactura);
 
                 if (dsEncabezado.Tables[0].Rows.Count == 0)
                 {
@@ -79,8 +78,7 @@ namespace PresentacionFacturacion
                     "select d.codart, a.desart, d.cantart, d.precioart, " +
                     "(d.cantart * d.precioart) as subtotallinea " +
                     "from sftdefac1 d left join sftarti0 a on d.codart = a.codart " +
-                    "where d.numfac = @numfac",
-                    new SqlParameter("@numfac", numeroFactura));
+                    "where d.numfac = " + numeroFactura);
 
                 LocalReport reporte = this.reportViewer1.LocalReport;
                 reporte.ReportEmbeddedResource = "PresentacionFacturacion.ReportFactura.rdlc";

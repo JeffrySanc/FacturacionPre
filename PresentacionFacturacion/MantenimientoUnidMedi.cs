@@ -21,8 +21,7 @@ namespace PresentacionFacturacion
             try
             {
                 DataSet ds = Conexion_BD.Ejecutar(
-                    "select * from sftunid0 where coduni = @codigo",
-                    new SqlParameter("@codigo", txtcodigo_uni.Text.Trim()));
+                    "select * from sftunid0 where coduni = '" + txtcodigo_uni.Text.Trim() + "'");
 
                 if (ds.Tables[0].Rows.Count == 0)
                 {
@@ -79,9 +78,8 @@ namespace PresentacionFacturacion
                 if (respuesta != DialogResult.Yes)
                     return;
 
-                Conexion_BD.EjecutarComando(
-                    "delete from sftunid0 where coduni = @codigo",
-                    new SqlParameter("@codigo", txtcodigo_uni.Text.Trim()));
+                Conexion_BD.Ejecutar(
+                    "delete from sftunid0 where coduni = '" + txtcodigo_uni.Text.Trim() + "'");
 
                 MessageBox.Show("Registro eliminado correctamente...",
                     "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -115,23 +113,19 @@ namespace PresentacionFacturacion
 
             try
             {
-                DateTime fechaguardado = DateTime.Now;
+                string fechaguardado = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                 if (encontrado == 0)
                 {
-                    Conexion_BD.EjecutarComando(
-                        "insert into sftunid0 (coduni,desuni,fechaguardado) values (@cod,@des,@fg)",
-                        new SqlParameter("@cod", txtcodigo_uni.Text.Trim()),
-                        new SqlParameter("@des", txtdescripcion_uni.Text.Trim()),
-                        new SqlParameter("@fg", fechaguardado));
+                    Conexion_BD.Ejecutar(
+                        "insert into sftunid0 (coduni,desuni,fechaguardado) values ('" +
+                        txtcodigo_uni.Text.Trim() + "','" + txtdescripcion_uni.Text.Trim() + "','" + fechaguardado + "')");
                 }
                 else
                 {
-                    Conexion_BD.EjecutarComando(
-                        "update sftunid0 set desuni = @des, fechaguardado = @fg where coduni = @cod",
-                        new SqlParameter("@des", txtdescripcion_uni.Text.Trim()),
-                        new SqlParameter("@fg", fechaguardado),
-                        new SqlParameter("@cod", txtcodigo_uni.Text.Trim()));
+                    Conexion_BD.Ejecutar(
+                        "update sftunid0 set desuni = '" + txtdescripcion_uni.Text.Trim() +
+                        "', fechaguardado = '" + fechaguardado + "' where coduni = '" + txtcodigo_uni.Text.Trim() + "'");
                 }
 
                 MessageBox.Show(encontrado == 0 ?

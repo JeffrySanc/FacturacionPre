@@ -35,13 +35,13 @@ namespace PresentacionFacturacion
             {
                 try
                 {
+                    string patron = txtconsulta.Text.Trim();
                     string cmd =
                         "select f.numfac, f.fecfac, f.codcli, c.nomcli, f.subtot, f.itbis, f.total " +
                         "from sftfact0 f left join sftclie0 c on f.codcli = c.codcli " +
-                        "where cast(f.numfac as varchar) like @patron or c.nomcli like @patron " +
+                        "where cast(f.numfac as varchar) like '%" + patron + "%' or c.nomcli like '%" + patron + "%' " +
                         "order by f.numfac desc";
-                    DataSet ds = Conexion_BD.Ejecutar(cmd,
-                        new System.Data.SqlClient.SqlParameter("@patron", "%" + txtconsulta.Text.Trim() + "%"));
+                    DataSet ds = Conexion_BD.Ejecutar(cmd);
                     dataGridView1.DataSource = ds.Tables[0];
                 }
                 catch (Exception ex)

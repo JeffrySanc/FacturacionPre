@@ -21,8 +21,7 @@ namespace PresentacionFacturacion
             try
             {
                 DataSet ds = Conexion_BD.Ejecutar(
-                    "select usuario, nomusu from sftusua0 where usuario = @codigo",
-                    new SqlParameter("@codigo", txtCodigo.Text.Trim()));
+                    "select usuario, nomusu from sftusua0 where usuario = '" + txtCodigo.Text.Trim() + "'");
 
                 if (ds.Tables[0].Rows.Count == 0)
                 {
@@ -81,9 +80,8 @@ namespace PresentacionFacturacion
                 if (respuesta != DialogResult.Yes)
                     return;
 
-                Conexion_BD.EjecutarComando(
-                    "delete from sftusua0 where usuario = @codigo",
-                    new SqlParameter("@codigo", txtCodigo.Text.Trim()));
+                Conexion_BD.Ejecutar(
+                    "delete from sftusua0 where usuario = '" + txtCodigo.Text.Trim() + "'");
 
                 MessageBox.Show("Registro eliminado correctamente...",
                     "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -133,37 +131,29 @@ namespace PresentacionFacturacion
 
             try
             {
-                DateTime fechaguardado = DateTime.Now;
+                string fechaguardado = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                 if (encontrado == 0)
                 {
-                    string clave = Conexion.Seguridad.HashSHA256(txtClave.Text.Trim());
-                    Conexion_BD.EjecutarComando(
-                        "insert into sftusua0 (usuario, nomusu, password, fechaguardado) values (@usu, @nom, @pas, @fg)",
-                        new SqlParameter("@usu", txtCodigo.Text.Trim()),
-                        new SqlParameter("@nom", txtNombre.Text.Trim()),
-                        new SqlParameter("@pas", clave),
-                        new SqlParameter("@fg", fechaguardado));
+                    string clave = txtClave.Text.Trim();
+                    Conexion_BD.Ejecutar(
+                        "insert into sftusua0 (usuario, nomusu, password, fechaguardado) values ('" +
+                        txtCodigo.Text.Trim() + "','" + txtNombre.Text.Trim() + "','" + clave + "','" + fechaguardado + "')");
                 }
                 else
                 {
                     if (txtClave.Text.Trim().Length > 0)
                     {
-                        string clave = Conexion.Seguridad.HashSHA256(txtClave.Text.Trim());
-                        Conexion_BD.EjecutarComando(
-                            "update sftusua0 set nomusu = @nom, password = @pas, fechaguardado = @fg where usuario = @usu",
-                            new SqlParameter("@nom", txtNombre.Text.Trim()),
-                            new SqlParameter("@pas", clave),
-                            new SqlParameter("@fg", fechaguardado),
-                            new SqlParameter("@usu", txtCodigo.Text.Trim()));
+                        string clave = txtClave.Text.Trim();
+                        Conexion_BD.Ejecutar(
+                            "update sftusua0 set nomusu = '" + txtNombre.Text.Trim() + "', password = '" + clave +
+                            "', fechaguardado = '" + fechaguardado + "' where usuario = '" + txtCodigo.Text.Trim() + "'");
                     }
                     else
                     {
-                        Conexion_BD.EjecutarComando(
-                            "update sftusua0 set nomusu = @nom, fechaguardado = @fg where usuario = @usu",
-                            new SqlParameter("@nom", txtNombre.Text.Trim()),
-                            new SqlParameter("@fg", fechaguardado),
-                            new SqlParameter("@usu", txtCodigo.Text.Trim()));
+                        Conexion_BD.Ejecutar(
+                            "update sftusua0 set nomusu = '" + txtNombre.Text.Trim() + "', fechaguardado = '" +
+                            fechaguardado + "' where usuario = '" + txtCodigo.Text.Trim() + "'");
                     }
                 }
 

@@ -38,10 +38,9 @@ namespace PresentacionFacturacion
                 {
                     string cmd = "select codart as 'Código', desart as 'Descripción', " +
                                  "preart as 'Precio', exiactart as 'Existencia' " +
-                                 "from sftarti0 where desart like @patron";
+                                 "from sftarti0 where desart like '%" + txtconsulta.Text.Trim() + "%'";
 
-                    DataSet ds = Conexion_BD.Ejecutar(cmd,
-                        new System.Data.SqlClient.SqlParameter("@patron", "%" + txtconsulta.Text.Trim() + "%"));
+                    DataSet ds = Conexion_BD.Ejecutar(cmd);
                     dataGridView1.DataSource = ds.Tables[0];
                 }
                 catch (Exception ex)

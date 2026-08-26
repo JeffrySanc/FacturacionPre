@@ -45,9 +45,9 @@ namespace PresentacionFacturacion
         {
             try
             {
-                object resultado = Conexion_BD.EjecutarEscalar(
+                DataSet ds = Conexion_BD.Ejecutar(
                     "select isnull(max(numfac), 0) + 1 from sftfact0");
-                txtnofactura.Text = Convert.ToInt32(resultado ?? 1).ToString();
+                txtnofactura.Text = Convert.ToInt32(ds.Tables[0].Rows[0][0] ?? 1).ToString();
             }
             catch (Exception ex)
             {
@@ -127,18 +127,17 @@ namespace PresentacionFacturacion
             // Validamos la existencia disponible del artículo
             try
             {
-                object existenciaDb = Conexion_BD.EjecutarEscalar(
-                    "select isnull(exiactart, 0) from sftarti0 where codart = @codigo",
-                    new SqlParameter("@codigo", txtcodigoart.Text.Trim()));
+                DataSet dsExist = Conexion_BD.Ejecutar(
+                    "select isnull(exiactart, 0) from sftarti0 where codart = '" + txtcodigoart.Text.Trim() + "'");
 
-                if (existenciaDb == null)
+                if (dsExist.Tables[0].Rows.Count == 0)
                 {
                     MessageBox.Show("El artículo no existe en inventario.",
                         "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                decimal existencia = Convert.ToDecimal(existenciaDb);
+                decimal existencia = Convert.ToDecimal(dsExist.Tables[0].Rows[0][0]);
                 if (cantidad > existencia)
                 {
                     MessageBox.Show("Solo hay " + existencia + " unidad(es) disponible(s) de este artículo.",
@@ -224,56 +223,37 @@ namespace PresentacionFacturacion
 
             try
             {
-                List<Func<SqlCommand, object>> operaciones = new List<Func<SqlCommand, object>>();
+                string fechaGuardado = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                string fechaFactura = fecfac.ToString("yyyy-MM-dd HH:mm:ss");
 
-                // 1) Encabezado de la factura; devolvemos el número generado
-                operaciones.Add(cmd =>
-                {
-                    cmd.CommandText =
-                        "insert into sftfact0 (codcli,fecfac,subtot,itbis,total,fechaguardado) " +
-                        "values (@codcli,@fecfac,@subtot,@itbis,@total,@fg); " +
-                        "select cast(scope_identity() as int);";
-                    cmd.Parameters.AddWithValue("@codcli", codcli);
-                    cmd.Parameters.AddWithValue("@fecfac", fecfac);
-                    cmd.Parameters.AddWithValue("@subtot", subtotal);
-                    cmd.Parameters.AddWithValue("@itbis", itbis);
-                    cmd.Parameters.AddWithValue("@total", total);
-                    cmd.Parameters.AddWithValue("@fg", DateTime.Now);
-                    numeroFactura = Convert.ToInt32(cmd.ExecuteScalar());
-                    return numeroFactura;
-                });
+                // Calcular el próximo número de factura
+                object resultado = Conexion_BD.Ejecutar("select isnull(max(numfac), 0) from sftfact0").Tables[0].Rows[0][0];
+                numeroFactura = Convert.ToInt32(resultado ?? 0) + 1;
 
+                // 1) Insertar encabezado de la factura (incluyendo numfac)
+                string insertEncabezado =
+                    "insert into sftfact0 (numfac,codcli,fecfac,subtot,itbis,total,fechaguardado) " +
+                    "values (" + numeroFactura + ",'" + codcli + "','" + fechaFactura + "'," + subtotal + "," +
+                    itbis + "," + total + ",'" + fechaGuardado + "')";
+                Conexion_BD.Ejecutar(insertEncabezado);
+
+                // 2) Insertar detalle y descontar existencia
                 foreach (DataGridViewRow fila in dataGridDetalle.Rows)
                 {
                     string codart = fila.Cells["Codigo"].Value.ToString();
                     decimal precioLinea = Convert.ToDecimal(fila.Cells["Precio"].Value);
                     decimal cantidadLinea = Convert.ToDecimal(fila.Cells["Cantidad"].Value);
 
-                    // 2) Detalle de la factura
-                    operaciones.Add(cmd =>
-                    {
-                        cmd.CommandText =
-                            "insert into sftdefac1 (numfac,codart,cantart,precioart) " +
-                            "values (@numfac,@codart,@cant,@precio)";
-                        cmd.Parameters.AddWithValue("@numfac", numeroFactura);
-                        cmd.Parameters.AddWithValue("@codart", codart);
-                        cmd.Parameters.AddWithValue("@cant", cantidadLinea);
-                        cmd.Parameters.AddWithValue("@precio", precioLinea);
-                        return cmd.ExecuteNonQuery();
-                    });
+                    string insertDetalle =
+                        "insert into sftdefac1 (numfac,codart,cantart,precioart) " +
+                        "values (" + numeroFactura + ",'" + codart + "'," + cantidadLinea + "," + precioLinea + ")";
+                    Conexion_BD.Ejecutar(insertDetalle);
 
-                    // 3) Descuento de existencia
-                    operaciones.Add(cmd =>
-                    {
-                        cmd.CommandText =
-                            "update sftarti0 set exiactart = isnull(exiactart, 0) - @cant where codart = @codart";
-                        cmd.Parameters.AddWithValue("@cant", cantidadLinea);
-                        cmd.Parameters.AddWithValue("@codart", codart);
-                        return cmd.ExecuteNonQuery();
-                    });
+                    string descontarExistencia =
+                        "update sftarti0 set exiactart = isnull(exiactart, 0) - " + cantidadLinea +
+                        " where codart = '" + codart + "'";
+                    Conexion_BD.Ejecutar(descontarExistencia);
                 }
-
-                Conexion_BD.EjecutarEnTransaccion(operaciones.ToArray());
 
                 MessageBox.Show("Factura No. " + numeroFactura +
                     " registrada correctamente...",

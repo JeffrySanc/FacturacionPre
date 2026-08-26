@@ -33,8 +33,7 @@ namespace PresentacionFacturacion
             try
             {
                 DataSet ds = Conexion_BD.Ejecutar(
-                    "select * from sftclie0 where codcli = @codigo",
-                    new SqlParameter("@codigo", txtCodigo.Text.Trim()));
+                    "select * from sftclie0 where codcli = '" + txtCodigo.Text.Trim() + "'");
 
                 if (ds.Tables[0].Rows.Count == 0)
                 {
@@ -105,10 +104,9 @@ namespace PresentacionFacturacion
                 int existeEnFactura = 0;
                 try
                 {
-                    object resultado = Conexion_BD.EjecutarEscalar(
-                        "select count(*) from sftfact0 where codcli = @codigo",
-                        new SqlParameter("@codigo", txtCodigo.Text.Trim()));
-                    existeEnFactura = Convert.ToInt32(resultado ?? 0);
+                    DataSet dsCount = Conexion_BD.Ejecutar(
+                        "select count(*) from sftfact0 where codcli = '" + txtCodigo.Text.Trim() + "'");
+                    existeEnFactura = Convert.ToInt32(dsCount.Tables[0].Rows[0][0] ?? 0);
                 }
                 catch { }
 
@@ -119,9 +117,8 @@ namespace PresentacionFacturacion
                     return;
                 }
 
-                Conexion_BD.EjecutarComando(
-                    "delete from sftclie0 where codcli = @codigo",
-                    new SqlParameter("@codigo", txtCodigo.Text.Trim()));
+                Conexion_BD.Ejecutar(
+                    "delete from sftclie0 where codcli = '" + txtCodigo.Text.Trim() + "'");
 
                 MessageBox.Show("Registro eliminado correctamente...",
                     "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -155,44 +152,26 @@ namespace PresentacionFacturacion
 
             try
             {
-                DateTime fechaguardado = DateTime.Now;
+                string fechaguardado = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                 if (encontrado == 0)
                 {
-                    Conexion_BD.EjecutarComando(
+                    Conexion_BD.Ejecutar(
                         "insert into sftclie0 (codcli,nomcli,apecli,telcli,numfaxcli,dircli,seccli,ciucli,limcrecli,balcli,obscli,fechaguardado) " +
-                        "values (@cod,@nom,@ape,@tel,@cor,@dir,@sec,@ciu,@lim,@bal,@obs,@fg)",
-                        new SqlParameter("@cod", txtCodigo.Text.Trim()),
-                        new SqlParameter("@nom", txtNombre.Text.Trim()),
-                        new SqlParameter("@ape", txtapellido.Text.Trim()),
-                        new SqlParameter("@tel", txtTelefono.Text.Trim()),
-                        new SqlParameter("@cor", txtcorreo.Text.Trim()),
-                        new SqlParameter("@dir", txtDireccion.Text.Trim()),
-                        new SqlParameter("@sec", txtsector.Text.Trim()),
-                        new SqlParameter("@ciu", txtCiudad.Text.Trim()),
-                        new SqlParameter("@lim", DecimalDe(txtlimite)),
-                        new SqlParameter("@bal", DecimalDe(txtbalance)),
-                        new SqlParameter("@obs", txtobservaciones.Text.Trim()),
-                        new SqlParameter("@fg", fechaguardado));
+                        "values ('" + txtCodigo.Text.Trim() + "','" + txtNombre.Text.Trim() + "','" + txtapellido.Text.Trim() +
+                        "','" + txtTelefono.Text.Trim() + "','" + txtcorreo.Text.Trim() + "','" + txtDireccion.Text.Trim() +
+                        "','" + txtsector.Text.Trim() + "','" + txtCiudad.Text.Trim() + "'," + DecimalDe(txtlimite) + "," +
+                        DecimalDe(txtbalance) + ",'" + txtobservaciones.Text.Trim() + "','" + fechaguardado + "')");
                 }
                 else
                 {
-                    Conexion_BD.EjecutarComando(
-                        "update sftclie0 set nomcli = @nom, apecli = @ape, telcli = @tel, numfaxcli = @cor, " +
-                        "dircli = @dir, seccli = @sec, ciucli = @ciu, limcrecli = @lim, balcli = @bal, " +
-                        "obscli = @obs, fechaguardado = @fg where codcli = @cod",
-                        new SqlParameter("@nom", txtNombre.Text.Trim()),
-                        new SqlParameter("@ape", txtapellido.Text.Trim()),
-                        new SqlParameter("@tel", txtTelefono.Text.Trim()),
-                        new SqlParameter("@cor", txtcorreo.Text.Trim()),
-                        new SqlParameter("@dir", txtDireccion.Text.Trim()),
-                        new SqlParameter("@sec", txtsector.Text.Trim()),
-                        new SqlParameter("@ciu", txtCiudad.Text.Trim()),
-                        new SqlParameter("@lim", DecimalDe(txtlimite)),
-                        new SqlParameter("@bal", DecimalDe(txtbalance)),
-                        new SqlParameter("@obs", txtobservaciones.Text.Trim()),
-                        new SqlParameter("@fg", fechaguardado),
-                        new SqlParameter("@cod", txtCodigo.Text.Trim()));
+                    Conexion_BD.Ejecutar(
+                        "update sftclie0 set nomcli = '" + txtNombre.Text.Trim() + "', apecli = '" + txtapellido.Text.Trim() +
+                        "', telcli = '" + txtTelefono.Text.Trim() + "', numfaxcli = '" + txtcorreo.Text.Trim() +
+                        "', dircli = '" + txtDireccion.Text.Trim() + "', seccli = '" + txtsector.Text.Trim() +
+                        "', ciucli = '" + txtCiudad.Text.Trim() + "', limcrecli = " + DecimalDe(txtlimite) +
+                        ", balcli = " + DecimalDe(txtbalance) + ", obscli = '" + txtobservaciones.Text.Trim() +
+                        "', fechaguardado = '" + fechaguardado + "' where codcli = '" + txtCodigo.Text.Trim() + "'");
                 }
 
                 MessageBox.Show(encontrado == 0 ?
@@ -245,6 +224,11 @@ namespace PresentacionFacturacion
 
         private void MantenimientoCliente_Load(object sender, EventArgs e)
         {
+        }
+
+        private void txtcorreo_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

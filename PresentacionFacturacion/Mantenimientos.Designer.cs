@@ -35,6 +35,10 @@ namespace PresentacionFacturacion
             this.btnconsultar = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
+            // btnsalir
+            // 
+            this.btnsalir.Location = new System.Drawing.Point(662, 308);
+            // 
             // btnguardar
             // 
             this.btnguardar.BackColor = System.Drawing.Color.RoyalBlue;

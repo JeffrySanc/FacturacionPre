@@ -28,8 +28,7 @@ namespace PresentacionFacturacion
             try
             {
                 DataSet ds = Conexion_BD.Ejecutar(
-                    "select * from sftarti0 where codart = @codigo",
-                    new SqlParameter("@codigo", txtcodigo.Text.Trim()));
+                    "select * from sftarti0 where codart = '" + txtcodigo.Text.Trim() + "'");
 
                 if (ds.Tables[0].Rows.Count == 0)
                 {
@@ -90,10 +89,9 @@ namespace PresentacionFacturacion
                 int existeEnFactura = 0;
                 try
                 {
-                    object resultado = Conexion_BD.EjecutarEscalar(
-                        "select count(*) from sftdefac1 where codart = @codigo",
-                        new SqlParameter("@codigo", txtcodigo.Text.Trim()));
-                    existeEnFactura = Convert.ToInt32(resultado ?? 0);
+                    DataSet dsCount = Conexion_BD.Ejecutar(
+                        "select count(*) from sftdefac1 where codart = '" + txtcodigo.Text.Trim() + "'");
+                    existeEnFactura = Convert.ToInt32(dsCount.Tables[0].Rows[0][0] ?? 0);
                 }
                 catch { }
 
@@ -104,9 +102,8 @@ namespace PresentacionFacturacion
                     return;
                 }
 
-                Conexion_BD.EjecutarComando(
-                    "delete from sftarti0 where codart = @codigo",
-                    new SqlParameter("@codigo", txtcodigo.Text.Trim()));
+                Conexion_BD.Ejecutar(
+                    "delete from sftarti0 where codart = '" + txtcodigo.Text.Trim() + "'");
 
                 MessageBox.Show("Registro eliminado correctamente...",
                     "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -159,27 +156,21 @@ namespace PresentacionFacturacion
 
             try
             {
-                DateTime fechaguardado = DateTime.Now;
+                string fechaguardado = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
                 if (encontrado == 0)
                 {
-                    Conexion_BD.EjecutarComando(
-                        "insert into sftarti0 (codart,desart,preart,exiactart,fechaguardado) values (@cod,@des,@pre,@exi,@fg)",
-                        new SqlParameter("@cod", txtcodigo.Text.Trim()),
-                        new SqlParameter("@des", txtnombre.Text.Trim()),
-                        new SqlParameter("@pre", precio),
-                        new SqlParameter("@exi", existencia),
-                        new SqlParameter("@fg", fechaguardado));
+                    Conexion_BD.Ejecutar(
+                        "insert into sftarti0 (codart,desart,preart,exiactart,fechaguardado) values ('" +
+                        txtcodigo.Text.Trim() + "','" + txtnombre.Text.Trim() + "'," + precio + "," +
+                        existencia + ",'" + fechaguardado + "')");
                 }
                 else
                 {
-                    Conexion_BD.EjecutarComando(
-                        "update sftarti0 set desart = @des, preart = @pre, exiactart = @exi, fechaguardado = @fg where codart = @cod",
-                        new SqlParameter("@des", txtnombre.Text.Trim()),
-                        new SqlParameter("@pre", precio),
-                        new SqlParameter("@exi", existencia),
-                        new SqlParameter("@fg", fechaguardado),
-                        new SqlParameter("@cod", txtcodigo.Text.Trim()));
+                    Conexion_BD.Ejecutar(
+                        "update sftarti0 set desart = '" + txtnombre.Text.Trim() + "', preart = " + precio +
+                        ", exiactart = " + existencia + ", fechaguardado = '" + fechaguardado +
+                        "' where codart = '" + txtcodigo.Text.Trim() + "'");
                 }
 
                 MessageBox.Show(encontrado == 0 ?

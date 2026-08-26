@@ -47,23 +47,16 @@ namespace PresentacionFacturacion
             {
                 string texto = txtconsulta.Text.Trim();
 
-                // Si está vacío, mostrar todas las unidades
+                // Si estï¿½ vacï¿½o, mostrar todas las unidades
                 if (string.IsNullOrEmpty(texto))
                 {
                     CargarUnidades();
                     return;
                 }
 
-                string sql = @"
-                    SELECT *
-                    FROM SFTUNID0
-                    WHERE coduni LIKE @patron
-                       OR desuni LIKE @patron";
+                string sql = "SELECT * FROM SFTUNID0 WHERE coduni LIKE '%" + texto + "%' OR desuni LIKE '%" + texto + "%'";
 
-                DataSet ds = Conexion_BD.Ejecutar(
-                    sql,
-                    new SqlParameter("@patron", "%" + texto + "%")
-                );
+                DataSet ds = Conexion_BD.Ejecutar(sql);
 
                 if (ds != null && ds.Tables.Count > 0)
                 {

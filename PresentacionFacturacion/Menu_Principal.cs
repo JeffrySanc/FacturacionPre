@@ -12,6 +12,7 @@ namespace PresentacionFacturacion
             lblusuario.Text = nombre;
         }
 
+
         private void AbrirFormularioHijo<T>(string textoMenu) where T : Form, new()
         {
             Form existente = this.MdiChildren
@@ -51,6 +52,11 @@ namespace PresentacionFacturacion
         private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AbrirFormularioHijo<MantenimientoUsuario>("Mantenimiento de Usuarios");
+        }
+
+        private void configuracionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo<Configuracion>("Configuración del Sistema");
         }
 
         private void facturacionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -123,28 +129,16 @@ namespace PresentacionFacturacion
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        
+
+        private void iconMenuItem1_Click_1(object sender, EventArgs e)
         {
+            AbrirFormularioHijo<Configuracion>("Configuración del Sistema");
         }
 
-        private void lblusuario_Click(object sender, EventArgs e)
+        private void Menu_Principal_FormClosing(object sender, FormClosingEventArgs e)
         {
-        }
-
-        private void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-        }
-
-        private void iconMenuItem1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void menucolor_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-        }
-
-        private void menureportes_Click(object sender, EventArgs e)
-        {
+            Application.Exit();
         }
     }
 }

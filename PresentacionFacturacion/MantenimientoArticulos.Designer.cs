@@ -39,6 +39,10 @@ namespace PresentacionFacturacion
             this.txtexistencia = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
+            // btnsalir
+            // 
+            this.btnsalir.Location = new System.Drawing.Point(662, 308);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -66,6 +70,15 @@ namespace PresentacionFacturacion
             this.label3.TabIndex = 14;
             this.label3.Text = "Precio:";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(122, 295);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 20);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Existencia:";
+            // 
             // txtcodigo
             // 
             this.txtcodigo.Location = new System.Drawing.Point(212, 101);
@@ -87,15 +100,6 @@ namespace PresentacionFacturacion
             this.txtprecio.Name = "txtprecio";
             this.txtprecio.Size = new System.Drawing.Size(217, 26);
             this.txtprecio.TabIndex = 17;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(122, 295);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 20);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Existencia:";
             // 
             // txtexistencia
             // 

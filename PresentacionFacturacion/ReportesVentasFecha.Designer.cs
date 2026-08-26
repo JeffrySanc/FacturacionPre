@@ -124,6 +124,7 @@ namespace PresentacionFacturacion
             this.Name = "ReportesVentasFecha";
             this.Text = "Reporte de Ventas por Fecha";
             this.Load += new System.EventHandler(this.ReportesVentasFecha_Load);
+            this.Shown += new System.EventHandler(this.ReportesVentasFecha_Shown);
             this.pnlFiltros.ResumeLayout(false);
             this.pnlFiltros.PerformLayout();
             this.ResumeLayout(false);

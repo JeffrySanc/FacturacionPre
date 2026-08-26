@@ -34,6 +34,10 @@ namespace PresentacionFacturacion
 
         private void ReportesVentasFecha_Load(object sender, EventArgs e)
         {
+        }
+
+        private void ReportesVentasFecha_Shown(object sender, EventArgs e)
+        {
             CargarReporte();
         }
 
@@ -57,16 +61,23 @@ namespace PresentacionFacturacion
                 DateTime desde = dtpDesde.Value.Date;
                 DateTime hasta = dtpHasta.Value.Date.AddDays(1).AddSeconds(-1);
 
+                string fechaDesde = desde.ToString("yyyy-MM-dd HH:mm:ss");
+                string fechaHasta = hasta.ToString("yyyy-MM-dd HH:mm:ss");
                 DataSet ds = Conexion_BD.Ejecutar(
                     "select numfac, fecfac, codcli, isnull(subtot, 0) as subtot, " +
                     "isnull(itbis, 0) as itbis, isnull(total, 0) as total " +
-                    "from sftfact0 where fecfac >= @desde and fecfac <= @hasta " +
-                    "order by fecfac desc, numfac desc",
-                    new SqlParameter("@desde", desde),
-                    new SqlParameter("@hasta", hasta));
+                    "from sftfact0 where fecfac >= '" + fechaDesde + "' and fecfac <= '" + fechaHasta + "' " +
+                    "order by fecfac desc, numfac desc");
 
-                DataTable datos = ds.Tables[0];
+                DataTable datos = ds.Tables[0].Copy();
                 datos.TableName = "sftfact0";
+
+                if (datos.Columns.Contains("numfac")) datos.Columns["numfac"].ColumnName = "NUMFAC";
+                if (datos.Columns.Contains("fecfac")) datos.Columns["fecfac"].ColumnName = "FECFAC";
+                if (datos.Columns.Contains("codcli")) datos.Columns["codcli"].ColumnName = "CODCLI";
+                if (datos.Columns.Contains("subtot")) datos.Columns["subtot"].ColumnName = "SUBTOT";
+                if (datos.Columns.Contains("itbis")) datos.Columns["itbis"].ColumnName = "ITBIS";
+                if (datos.Columns.Contains("total")) datos.Columns["total"].ColumnName = "TOTAL";
 
                 LocalReport reporte = this.reportViewer1.LocalReport;
                 reporte.ReportEmbeddedResource = "PresentacionFacturacion.ReportVentasFechas.rdlc";

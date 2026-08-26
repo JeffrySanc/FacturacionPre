@@ -49,11 +49,9 @@ namespace PresentacionFacturacion
                 }
 
                 string cmd = "SELECT nomusu FROM sftusua0 " +
-                             "WHERE usuario = @usuario AND password = @clave";
+                             "WHERE usuario = '" + usuario + "' AND password = '" + clave + "'";
 
-                DataSet ds = Conexion_BD.Ejecutar(cmd,
-                    new System.Data.SqlClient.SqlParameter("@usuario", usuario),
-                    new System.Data.SqlClient.SqlParameter("@clave", Conexion.Seguridad.HashSHA256(clave)));
+                DataSet ds = Conexion_BD.Ejecutar(cmd);
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {

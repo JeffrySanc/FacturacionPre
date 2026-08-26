@@ -38,9 +38,8 @@ namespace PresentacionFacturacion
             {
                 try
                 {
-                    string cmd = "select * from sftclie0 where nomcli like @patron";
-                    DataSet ds = Conexion_BD.Ejecutar(cmd,
-                        new System.Data.SqlClient.SqlParameter("@patron", "%" + txtconsulta.Text.Trim() + "%"));
+                    string cmd = "select * from sftclie0 where nomcli like '%" + txtconsulta.Text.Trim() + "%'";
+                    DataSet ds = Conexion_BD.Ejecutar(cmd);
                     dataGridView1.DataSource = ds.Tables[0];
                 }
                 catch (Exception ex)

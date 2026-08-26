@@ -59,14 +59,34 @@ namespace PresentacionFacturacion
             this.lbobservacion = new System.Windows.Forms.Label();
             this.txtobservaciones = new System.Windows.Forms.TextBox();
             this.pnlEncabezado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picIcono)).BeginInit();
             this.grpPersonales.SuspendLayout();
             this.grpUbicacion.SuspendLayout();
             this.grpComercial.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picIcono)).BeginInit();
             this.SuspendLayout();
-            //
+            // 
+            // btnguardar
+            // 
+            this.btnguardar.Location = new System.Drawing.Point(952, 165);
+            // 
+            // btneliminar
+            // 
+            this.btneliminar.Location = new System.Drawing.Point(952, 275);
+            // 
+            // btnbuscar
+            // 
+            this.btnbuscar.Location = new System.Drawing.Point(952, 110);
+            // 
+            // btnconsultar
+            // 
+            this.btnconsultar.Location = new System.Drawing.Point(952, 220);
+            // 
+            // btnsalir
+            // 
+            this.btnsalir.Location = new System.Drawing.Point(952, 330);
+            // 
             // pnlEncabezado
-            //
+            // 
             this.pnlEncabezado.BackColor = System.Drawing.Color.SteelBlue;
             this.pnlEncabezado.Controls.Add(this.picIcono);
             this.pnlEncabezado.Controls.Add(this.lblTitulo);
@@ -76,44 +96,44 @@ namespace PresentacionFacturacion
             this.pnlEncabezado.Name = "pnlEncabezado";
             this.pnlEncabezado.Size = new System.Drawing.Size(1084, 78);
             this.pnlEncabezado.TabIndex = 22;
-            //
+            // 
             // picIcono
-            //
+            // 
             this.picIcono.BackColor = System.Drawing.Color.Transparent;
             this.picIcono.IconChar = FontAwesome.Sharp.IconChar.Users;
             this.picIcono.IconColor = System.Drawing.Color.White;
             this.picIcono.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.picIcono.IconSize = 44;
+            this.picIcono.IconSize = 48;
             this.picIcono.Location = new System.Drawing.Point(20, 17);
             this.picIcono.Name = "picIcono";
             this.picIcono.Size = new System.Drawing.Size(48, 48);
             this.picIcono.TabIndex = 0;
             this.picIcono.TabStop = false;
-            //
+            // 
             // lblTitulo
-            //
+            // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(82, 12);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(330, 31);
+            this.lblTitulo.Size = new System.Drawing.Size(388, 40);
             this.lblTitulo.TabIndex = 1;
             this.lblTitulo.Text = "Mantenimiento de Clientes";
-            //
+            // 
             // lblSubtitulo
-            //
+            // 
             this.lblSubtitulo.AutoSize = true;
             this.lblSubtitulo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblSubtitulo.ForeColor = System.Drawing.Color.Gainsboro;
             this.lblSubtitulo.Location = new System.Drawing.Point(84, 46);
             this.lblSubtitulo.Name = "lblSubtitulo";
-            this.lblSubtitulo.Size = new System.Drawing.Size(337, 23);
+            this.lblSubtitulo.Size = new System.Drawing.Size(462, 28);
             this.lblSubtitulo.TabIndex = 2;
             this.lblSubtitulo.Text = "Registre, consulte y actualice los clientes del sistema";
-            //
+            // 
             // grpPersonales
-            //
+            // 
             this.grpPersonales.Controls.Add(this.lbcodigo);
             this.grpPersonales.Controls.Add(this.txtCodigo);
             this.grpPersonales.Controls.Add(this.lbnombre);
@@ -132,109 +152,110 @@ namespace PresentacionFacturacion
             this.grpPersonales.TabIndex = 23;
             this.grpPersonales.TabStop = false;
             this.grpPersonales.Text = "Datos Personales";
-            //
+            // 
             // lbcodigo
-            //
+            // 
             this.lbcodigo.AutoSize = true;
             this.lbcodigo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lbcodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lbcodigo.Location = new System.Drawing.Point(22, 42);
             this.lbcodigo.Name = "lbcodigo";
-            this.lbcodigo.Size = new System.Drawing.Size(66, 23);
+            this.lbcodigo.Size = new System.Drawing.Size(81, 28);
             this.lbcodigo.TabIndex = 0;
             this.lbcodigo.Text = "Código:";
-            //
+            // 
             // txtCodigo
-            //
+            // 
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.txtCodigo.Location = new System.Drawing.Point(148, 38);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(272, 29);
+            this.txtCodigo.Size = new System.Drawing.Size(272, 33);
             this.txtCodigo.TabIndex = 0;
-            //
+            // 
             // lbnombre
-            //
+            // 
             this.lbnombre.AutoSize = true;
             this.lbnombre.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lbnombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lbnombre.Location = new System.Drawing.Point(22, 82);
             this.lbnombre.Name = "lbnombre";
-            this.lbnombre.Size = new System.Drawing.Size(73, 23);
+            this.lbnombre.Size = new System.Drawing.Size(89, 28);
             this.lbnombre.TabIndex = 0;
             this.lbnombre.Text = "Nombre:";
-            //
+            // 
             // txtNombre
-            //
+            // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.txtNombre.Location = new System.Drawing.Point(148, 78);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(272, 29);
+            this.txtNombre.Size = new System.Drawing.Size(272, 33);
             this.txtNombre.TabIndex = 1;
-            //
+            // 
             // lbapellido
-            //
+            // 
             this.lbapellido.AutoSize = true;
             this.lbapellido.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lbapellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lbapellido.Location = new System.Drawing.Point(22, 122);
             this.lbapellido.Name = "lbapellido";
-            this.lbapellido.Size = new System.Drawing.Size(74, 23);
+            this.lbapellido.Size = new System.Drawing.Size(90, 28);
             this.lbapellido.TabIndex = 0;
             this.lbapellido.Text = "Apellido:";
-            //
+            // 
             // txtapellido
-            //
+            // 
             this.txtapellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtapellido.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.txtapellido.Location = new System.Drawing.Point(148, 118);
             this.txtapellido.Name = "txtapellido";
-            this.txtapellido.Size = new System.Drawing.Size(272, 29);
+            this.txtapellido.Size = new System.Drawing.Size(272, 33);
             this.txtapellido.TabIndex = 2;
-            //
+            // 
             // lbtelefono
-            //
+            // 
             this.lbtelefono.AutoSize = true;
             this.lbtelefono.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lbtelefono.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lbtelefono.Location = new System.Drawing.Point(22, 162);
             this.lbtelefono.Name = "lbtelefono";
-            this.lbtelefono.Size = new System.Drawing.Size(78, 23);
+            this.lbtelefono.Size = new System.Drawing.Size(90, 28);
             this.lbtelefono.TabIndex = 0;
             this.lbtelefono.Text = "Teléfono:";
-            //
+            // 
             // txtTelefono
-            //
+            // 
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.txtTelefono.Location = new System.Drawing.Point(148, 158);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(272, 29);
+            this.txtTelefono.Size = new System.Drawing.Size(272, 33);
             this.txtTelefono.TabIndex = 3;
-            //
+            // 
             // lbcorreo
-            //
+            // 
             this.lbcorreo.AutoSize = true;
             this.lbcorreo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lbcorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lbcorreo.Location = new System.Drawing.Point(22, 202);
             this.lbcorreo.Name = "lbcorreo";
-            this.lbcorreo.Size = new System.Drawing.Size(64, 23);
+            this.lbcorreo.Size = new System.Drawing.Size(44, 28);
             this.lbcorreo.TabIndex = 0;
-            this.lbcorreo.Text = "Correo:";
-            //
+            this.lbcorreo.Text = "Fax:";
+            // 
             // txtcorreo
-            //
+            // 
             this.txtcorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtcorreo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.txtcorreo.Location = new System.Drawing.Point(148, 198);
             this.txtcorreo.Name = "txtcorreo";
-            this.txtcorreo.Size = new System.Drawing.Size(272, 29);
+            this.txtcorreo.Size = new System.Drawing.Size(272, 33);
             this.txtcorreo.TabIndex = 4;
-            //
+            this.txtcorreo.TextChanged += new System.EventHandler(this.txtcorreo_TextChanged);
+            // 
             // grpUbicacion
-            //
+            // 
             this.grpUbicacion.Controls.Add(this.lbdireccion);
             this.grpUbicacion.Controls.Add(this.txtDireccion);
             this.grpUbicacion.Controls.Add(this.lbsector);
@@ -249,69 +270,69 @@ namespace PresentacionFacturacion
             this.grpUbicacion.TabIndex = 24;
             this.grpUbicacion.TabStop = false;
             this.grpUbicacion.Text = "Ubicación";
-            //
+            // 
             // lbdireccion
-            //
+            // 
             this.lbdireccion.AutoSize = true;
             this.lbdireccion.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lbdireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lbdireccion.Location = new System.Drawing.Point(22, 40);
             this.lbdireccion.Name = "lbdireccion";
-            this.lbdireccion.Size = new System.Drawing.Size(82, 23);
+            this.lbdireccion.Size = new System.Drawing.Size(98, 28);
             this.lbdireccion.TabIndex = 0;
             this.lbdireccion.Text = "Dirección:";
-            //
+            // 
             // txtDireccion
-            //
+            // 
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDireccion.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.txtDireccion.Location = new System.Drawing.Point(148, 36);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(272, 29);
+            this.txtDireccion.Size = new System.Drawing.Size(272, 33);
             this.txtDireccion.TabIndex = 5;
-            //
+            // 
             // lbsector
-            //
+            // 
             this.lbsector.AutoSize = true;
             this.lbsector.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lbsector.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lbsector.Location = new System.Drawing.Point(22, 80);
             this.lbsector.Name = "lbsector";
-            this.lbsector.Size = new System.Drawing.Size(62, 23);
+            this.lbsector.Size = new System.Drawing.Size(72, 28);
             this.lbsector.TabIndex = 0;
             this.lbsector.Text = "Sector:";
-            //
+            // 
             // txtsector
-            //
+            // 
             this.txtsector.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtsector.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.txtsector.Location = new System.Drawing.Point(148, 76);
             this.txtsector.Name = "txtsector";
-            this.txtsector.Size = new System.Drawing.Size(272, 29);
+            this.txtsector.Size = new System.Drawing.Size(272, 33);
             this.txtsector.TabIndex = 6;
-            //
+            // 
             // lbciudad
-            //
+            // 
             this.lbciudad.AutoSize = true;
             this.lbciudad.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lbciudad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lbciudad.Location = new System.Drawing.Point(22, 120);
             this.lbciudad.Name = "lbciudad";
-            this.lbciudad.Size = new System.Drawing.Size(66, 23);
+            this.lbciudad.Size = new System.Drawing.Size(78, 28);
             this.lbciudad.TabIndex = 0;
             this.lbciudad.Text = "Ciudad:";
-            //
+            // 
             // txtCiudad
-            //
+            // 
             this.txtCiudad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCiudad.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.txtCiudad.Location = new System.Drawing.Point(148, 116);
             this.txtCiudad.Name = "txtCiudad";
-            this.txtCiudad.Size = new System.Drawing.Size(272, 29);
+            this.txtCiudad.Size = new System.Drawing.Size(272, 33);
             this.txtCiudad.TabIndex = 7;
-            //
+            // 
             // grpComercial
-            //
+            // 
             this.grpComercial.Controls.Add(this.lblimite);
             this.grpComercial.Controls.Add(this.txtlimite);
             this.grpComercial.Controls.Add(this.lbbanlance);
@@ -326,64 +347,64 @@ namespace PresentacionFacturacion
             this.grpComercial.TabIndex = 25;
             this.grpComercial.TabStop = false;
             this.grpComercial.Text = "Datos Comerciales";
-            //
+            // 
             // lblimite
-            //
+            // 
             this.lblimite.AutoSize = true;
             this.lblimite.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblimite.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblimite.Location = new System.Drawing.Point(22, 42);
             this.lblimite.Name = "lblimite";
-            this.lblimite.Size = new System.Drawing.Size(133, 23);
+            this.lblimite.Size = new System.Drawing.Size(163, 28);
             this.lblimite.TabIndex = 0;
             this.lblimite.Text = "Límite de crédito:";
-            //
+            // 
             // txtlimite
-            //
+            // 
             this.txtlimite.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtlimite.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.txtlimite.Location = new System.Drawing.Point(168, 38);
             this.txtlimite.Name = "txtlimite";
-            this.txtlimite.Size = new System.Drawing.Size(252, 29);
+            this.txtlimite.Size = new System.Drawing.Size(252, 33);
             this.txtlimite.TabIndex = 8;
             this.txtlimite.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtlimite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloDecimal_KeyPress);
-            //
+            // 
             // lbbanlance
-            //
+            // 
             this.lbbanlance.AutoSize = true;
             this.lbbanlance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lbbanlance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lbbanlance.Location = new System.Drawing.Point(22, 82);
             this.lbbanlance.Name = "lbbanlance";
-            this.lbbanlance.Size = new System.Drawing.Size(77, 23);
+            this.lbbanlance.Size = new System.Drawing.Size(82, 28);
             this.lbbanlance.TabIndex = 0;
             this.lbbanlance.Text = "Balance:";
-            //
+            // 
             // txtbalance
-            //
+            // 
             this.txtbalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtbalance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.txtbalance.Location = new System.Drawing.Point(168, 78);
             this.txtbalance.Name = "txtbalance";
-            this.txtbalance.Size = new System.Drawing.Size(252, 29);
+            this.txtbalance.Size = new System.Drawing.Size(252, 33);
             this.txtbalance.TabIndex = 9;
             this.txtbalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtbalance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloDecimal_KeyPress);
-            //
+            // 
             // lbobservacion
-            //
+            // 
             this.lbobservacion.AutoSize = true;
             this.lbobservacion.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lbobservacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lbobservacion.Location = new System.Drawing.Point(22, 122);
             this.lbobservacion.Name = "lbobservacion";
-            this.lbobservacion.Size = new System.Drawing.Size(114, 23);
+            this.lbobservacion.Size = new System.Drawing.Size(125, 28);
             this.lbobservacion.TabIndex = 0;
             this.lbobservacion.Text = "Observación:";
-            //
+            // 
             // txtobservaciones
-            //
+            // 
             this.txtobservaciones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtobservaciones.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.txtobservaciones.Location = new System.Drawing.Point(26, 152);
@@ -391,9 +412,9 @@ namespace PresentacionFacturacion
             this.txtobservaciones.Name = "txtobservaciones";
             this.txtobservaciones.Size = new System.Drawing.Size(394, 264);
             this.txtobservaciones.TabIndex = 10;
-            //
+            // 
             // MantenimientoCliente
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -402,16 +423,14 @@ namespace PresentacionFacturacion
             this.Controls.Add(this.grpUbicacion);
             this.Controls.Add(this.grpPersonales);
             this.Controls.Add(this.pnlEncabezado);
-            // Reposiciona los botones heredados en una columna a la derecha
-            this.btnbuscar.Location = new System.Drawing.Point(952, 110);
-            this.btnguardar.Location = new System.Drawing.Point(952, 165);
-            this.btnconsultar.Location = new System.Drawing.Point(952, 220);
-            this.btneliminar.Location = new System.Drawing.Point(952, 275);
-            this.btnsalir.Location = new System.Drawing.Point(952, 330);
             this.Name = "MantenimientoCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Mantenimiento de Clientes";
             this.Load += new System.EventHandler(this.MantenimientoCliente_Load);
+            this.Controls.SetChildIndex(this.pnlEncabezado, 0);
+            this.Controls.SetChildIndex(this.grpPersonales, 0);
+            this.Controls.SetChildIndex(this.grpUbicacion, 0);
+            this.Controls.SetChildIndex(this.grpComercial, 0);
             this.Controls.SetChildIndex(this.btnbuscar, 0);
             this.Controls.SetChildIndex(this.btnguardar, 0);
             this.Controls.SetChildIndex(this.btnconsultar, 0);
@@ -419,13 +438,13 @@ namespace PresentacionFacturacion
             this.Controls.SetChildIndex(this.btnsalir, 0);
             this.pnlEncabezado.ResumeLayout(false);
             this.pnlEncabezado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picIcono)).EndInit();
             this.grpPersonales.ResumeLayout(false);
             this.grpPersonales.PerformLayout();
             this.grpUbicacion.ResumeLayout(false);
             this.grpUbicacion.PerformLayout();
             this.grpComercial.ResumeLayout(false);
             this.grpComercial.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picIcono)).EndInit();
             this.ResumeLayout(false);
 
         }
