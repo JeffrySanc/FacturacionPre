@@ -15,6 +15,11 @@ namespace PresentacionFacturacion
         public Mantenimientos()
         {
             InitializeComponent();
+
+            btnguardar.Click += (s, e) => Guardar();
+            btnbuscar.Click += (s, e) => Buscar();
+            btnconsultar.Click += (s, e) => Consultar();
+            btneliminar.Click += (s, e) => Eliminar();
         }
 
         private void Mantenimientos_Load(object sender, EventArgs e)
@@ -24,7 +29,11 @@ namespace PresentacionFacturacion
 
         private void btnsalir_Click(object sender, EventArgs e)
         {
-          
+            if (MessageBox.Show("¿Desea salir?", "Aviso", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void btnbuscar_Click(object sender, EventArgs e)

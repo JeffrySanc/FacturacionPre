@@ -15,6 +15,8 @@ namespace PresentacionFacturacion
 {
     public partial class Facturacion : Formbase
     {
+        private const decimal TASA_ITBIS = 0.18m;
+
         public Facturacion()
         {
             InitializeComponent();
@@ -47,8 +49,10 @@ namespace PresentacionFacturacion
                     "select isnull(max(numfac), 0) + 1 from sftfact0");
                 txtnofactura.Text = Convert.ToInt32(resultado ?? 1).ToString();
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show("Error al obtener el número de factura: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtnofactura.Text = "1";
             }
         }
@@ -181,7 +185,7 @@ namespace PresentacionFacturacion
                 subtotal += Convert.ToDecimal(fila.Cells["Subtotal"].Value);
             }
 
-            decimal itbis = decimal.Round(subtotal * 0.18m, 2);
+            decimal itbis = decimal.Round(subtotal * TASA_ITBIS, 2);
             decimal total = subtotal + itbis;
 
             txtsubtotal.Text = subtotal.ToString("N2");
@@ -211,7 +215,7 @@ namespace PresentacionFacturacion
             foreach (DataGridViewRow fila in dataGridDetalle.Rows)
                 subtotal += Convert.ToDecimal(fila.Cells["Subtotal"].Value);
 
-            decimal itbis = decimal.Round(subtotal * 0.18m, 2);
+            decimal itbis = decimal.Round(subtotal * TASA_ITBIS, 2);
             decimal total = subtotal + itbis;
 
             string codcli = txtclientefact.Text.Trim();

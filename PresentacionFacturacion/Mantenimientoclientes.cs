@@ -102,6 +102,23 @@ namespace PresentacionFacturacion
                 if (respuesta != DialogResult.Yes)
                     return;
 
+                int existeEnFactura = 0;
+                try
+                {
+                    object resultado = Conexion_BD.EjecutarEscalar(
+                        "select count(*) from sftfact0 where codcli = @codigo",
+                        new SqlParameter("@codigo", txtCodigo.Text.Trim()));
+                    existeEnFactura = Convert.ToInt32(resultado ?? 0);
+                }
+                catch { }
+
+                if (existeEnFactura > 0)
+                {
+                    MessageBox.Show("No se puede eliminar este cliente porque tiene facturas asociadas.",
+                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 Conexion_BD.EjecutarComando(
                     "delete from sftclie0 where codcli = @codigo",
                     new SqlParameter("@codigo", txtCodigo.Text.Trim()));
@@ -227,43 +244,6 @@ namespace PresentacionFacturacion
         }
 
         private void MantenimientoCliente_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void lbcodigo_Click(object sender, EventArgs e)
-        {
-        }
-        private void lbnombre_Click(object sender, EventArgs e)
-        {
-        }
-        private void lbcedula_Click(object sender, EventArgs e)
-        {
-        }
-        private void lbtelefono_Click(object sender, EventArgs e)
-        {
-        }
-        private void lbdireccion_Click(object sender, EventArgs e)
-        {
-        }
-        private void lbcorreo_Click(object sender, EventArgs e)
-        {
-        }
-        private void txtCodigo_TextChanged(object sender, EventArgs e)
-        {
-        }
-        private void txtNombre_TextChanged(object sender, EventArgs e)
-        {
-        }
-        private void txtCedula_TextChanged(object sender, EventArgs e)
-        {
-        }
-        private void txtTelefono_TextChanged(object sender, EventArgs e)
-        {
-        }
-        private void txtDireccion_TextChanged(object sender, EventArgs e)
-        {
-        }
-        private void txtCorreo_TextChanged(object sender, EventArgs e)
         {
         }
     }

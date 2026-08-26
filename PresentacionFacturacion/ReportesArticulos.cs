@@ -44,14 +44,14 @@ namespace PresentacionFacturacion
                 reporte.DataSources.Clear();
                 reporte.DataSources.Add(new ReportDataSource("dsArticulos", datos));
                 reporte.SetParameters(new ReportParameter("Usuario", this.usuario));
+
+                this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar los datos del reporte: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            this.reportViewer1.RefreshReport();
         }
     }
 }

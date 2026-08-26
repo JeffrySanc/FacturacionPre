@@ -152,7 +152,6 @@ namespace PresentacionFacturacion
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(272, 29);
             this.txtCodigo.TabIndex = 0;
-            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
             //
             // lbnombre
             //
@@ -173,7 +172,6 @@ namespace PresentacionFacturacion
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(272, 29);
             this.txtNombre.TabIndex = 1;
-            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             //
             // lbapellido
             //
@@ -194,7 +192,6 @@ namespace PresentacionFacturacion
             this.txtapellido.Name = "txtapellido";
             this.txtapellido.Size = new System.Drawing.Size(272, 29);
             this.txtapellido.TabIndex = 2;
-            this.txtapellido.TextChanged += new System.EventHandler(this.txtCedula_TextChanged);
             //
             // lbtelefono
             //
@@ -215,7 +212,6 @@ namespace PresentacionFacturacion
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(272, 29);
             this.txtTelefono.TabIndex = 3;
-            this.txtTelefono.TextChanged += new System.EventHandler(this.txtTelefono_TextChanged);
             //
             // lbcorreo
             //
@@ -236,7 +232,6 @@ namespace PresentacionFacturacion
             this.txtcorreo.Name = "txtcorreo";
             this.txtcorreo.Size = new System.Drawing.Size(272, 29);
             this.txtcorreo.TabIndex = 4;
-            this.txtcorreo.TextChanged += new System.EventHandler(this.txtCorreo_TextChanged);
             //
             // grpUbicacion
             //
@@ -274,7 +269,6 @@ namespace PresentacionFacturacion
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(272, 29);
             this.txtDireccion.TabIndex = 5;
-            this.txtDireccion.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
             //
             // lbsector
             //
@@ -295,7 +289,6 @@ namespace PresentacionFacturacion
             this.txtsector.Name = "txtsector";
             this.txtsector.Size = new System.Drawing.Size(272, 29);
             this.txtsector.TabIndex = 6;
-            this.txtsector.TextChanged += new System.EventHandler(this.txtTelefono_TextChanged);
             //
             // lbciudad
             //
@@ -316,7 +309,6 @@ namespace PresentacionFacturacion
             this.txtCiudad.Name = "txtCiudad";
             this.txtCiudad.Size = new System.Drawing.Size(272, 29);
             this.txtCiudad.TabIndex = 7;
-            this.txtCiudad.TextChanged += new System.EventHandler(this.txtCorreo_TextChanged);
             //
             // grpComercial
             //

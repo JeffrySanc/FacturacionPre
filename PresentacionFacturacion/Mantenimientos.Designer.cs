@@ -35,11 +35,6 @@ namespace PresentacionFacturacion
             this.btnconsultar = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
-            // btnsalir
-            // 
-            this.btnsalir.Location = new System.Drawing.Point(662, 308);
-            this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
-            // 
             // btnguardar
             // 
             this.btnguardar.BackColor = System.Drawing.Color.RoyalBlue;
@@ -56,7 +51,6 @@ namespace PresentacionFacturacion
             this.btnguardar.TabIndex = 6;
             this.btnguardar.Text = "Guardar";
             this.btnguardar.UseVisualStyleBackColor = false;
-            this.btnguardar.Click += new System.EventHandler(this.btnguardar_Click);
             // 
             // btneliminar
             // 
@@ -74,7 +68,6 @@ namespace PresentacionFacturacion
             this.btneliminar.TabIndex = 9;
             this.btneliminar.Text = "Eliminar";
             this.btneliminar.UseVisualStyleBackColor = false;
-            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
             // 
             // btnbuscar
             // 
@@ -92,7 +85,6 @@ namespace PresentacionFacturacion
             this.btnbuscar.TabIndex = 10;
             this.btnbuscar.Text = "Buscar";
             this.btnbuscar.UseVisualStyleBackColor = false;
-            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
             // 
             // btnconsultar
             // 
@@ -110,7 +102,6 @@ namespace PresentacionFacturacion
             this.btnconsultar.TabIndex = 11;
             this.btnconsultar.Text = " Consultar";
             this.btnconsultar.UseVisualStyleBackColor = false;
-            this.btnconsultar.Click += new System.EventHandler(this.btnconsultar_Click);
             // 
             // Mantenimientos
             // 

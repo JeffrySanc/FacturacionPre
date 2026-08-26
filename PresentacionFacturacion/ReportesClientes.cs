@@ -36,14 +36,14 @@ namespace PresentacionFacturacion
 
                 this.reportViewer1.LocalReport.SetParameters(
                     new Microsoft.Reporting.WinForms.ReportParameter("Usuario", this.usuario));
+
+                this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar los datos del reporte: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            this.reportViewer1.RefreshReport();
         }
 
         private void reportViewer1_Load(object sender, EventArgs e)

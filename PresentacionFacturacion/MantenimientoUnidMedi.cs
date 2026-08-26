@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Conexion;
@@ -22,17 +16,7 @@ namespace PresentacionFacturacion
             InitializeComponent();
         }
 
-        private void MantenimientoUnidMedi_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnbuscar_Click(object sender, EventArgs e)
+        public override void Buscar()
         {
             try
             {
@@ -43,6 +27,8 @@ namespace PresentacionFacturacion
                 if (ds.Tables[0].Rows.Count == 0)
                 {
                     encontrado = 0;
+                    MessageBox.Show("La unidad " + txtcodigo_uni.Text.Trim() + " no existe...",
+                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -62,14 +48,61 @@ namespace PresentacionFacturacion
             btnguardar.Enabled = true;
         }
 
-        private void btnguardar_Click(object sender, EventArgs e)
+        public override void Consultar()
+        {
+            try
+            {
+                ConsultaUnidMedi conUnid = new ConsultaUnidMedi();
+                conUnid.ShowDialog();
+                if (conUnid.DialogResult == DialogResult.OK)
+                {
+                    txtcodigo_uni.Text = conUnid.dataGridView1.Rows[conUnid.dataGridView1.CurrentRow.Index].Cells[0].Value.ToString();
+                    Buscar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al abrir consulta: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public override void Eliminar()
+        {
+            try
+            {
+                DialogResult respuesta = MessageBox.Show(
+                    "¿Desea eliminar la unidad de medida " + txtcodigo_uni.Text.Trim() + "?",
+                    "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2);
+
+                if (respuesta != DialogResult.Yes)
+                    return;
+
+                Conexion_BD.EjecutarComando(
+                    "delete from sftunid0 where coduni = @codigo",
+                    new SqlParameter("@codigo", txtcodigo_uni.Text.Trim()));
+
+                MessageBox.Show("Registro eliminado correctamente...",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LimpiarCampos();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Ha ocurrido un error al eliminar: " + error.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public override bool Guardar()
         {
             if (txtcodigo_uni.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Debe indicar el código de la unidad de medida.",
                     "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtcodigo_uni.Focus();
-                return;
+                return false;
             }
 
             if (txtdescripcion_uni.Text.Trim().Length == 0)
@@ -77,7 +110,7 @@ namespace PresentacionFacturacion
                 MessageBox.Show("Debe indicar la descripción de la unidad de medida.",
                     "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtdescripcion_uni.Focus();
-                return;
+                return false;
             }
 
             try
@@ -105,67 +138,35 @@ namespace PresentacionFacturacion
                     "Registro guardado correctamente..." :
                     "Registro actualizado correctamente...",
                     "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                encontrado = 1;
             }
             catch (Exception error)
             {
                 MessageBox.Show("Ha ocurrido un error al guardar: " + error.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
+            btneliminar.Enabled = true;
+            btnguardar.Enabled = false;
+            txtdescripcion_uni.Focus();
+
+            return true;
+        }
+
+        private void LimpiarCampos()
+        {
+            txtcodigo_uni.Clear();
+            txtdescripcion_uni.Clear();
+            encontrado = 0;
             btneliminar.Enabled = false;
-            BorrarCampos(this);
             btnguardar.Enabled = false;
             txtcodigo_uni.Focus();
         }
 
-        private void BorrarCampos(Control control)
+        private void MantenimientoUnidMedi_Load(object sender, EventArgs e)
         {
-            foreach (var txt in control.Controls)
-            {
-                if (txt is TextBox)
-                    ((TextBox)txt).Clear();
-            }
-        }
-
-        private void btneliminar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DialogResult respuesta = MessageBox.Show(
-                    "¿Desea eliminar la unidad de medida " + txtcodigo_uni.Text.Trim() + "?",
-                    "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                    MessageBoxDefaultButton.Button2);
-
-                if (respuesta != DialogResult.Yes)
-                    return;
-
-                Conexion_BD.EjecutarComando(
-                    "delete from sftunid0 where coduni = @codigo",
-                    new SqlParameter("@codigo", txtcodigo_uni.Text.Trim()));
-
-                MessageBox.Show("Registro eliminado correctamente...",
-                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                BorrarCampos(this);
-                txtcodigo_uni.Focus();
-                btneliminar.Enabled = false;
-                btnguardar.Enabled = false;
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show("Ha ocurrido un error al eliminar: " + error.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnsalir_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("¿Desea salir?", "Aviso", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                this.Close();
-            }
         }
     }
 }

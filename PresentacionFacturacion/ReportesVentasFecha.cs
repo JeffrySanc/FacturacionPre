@@ -75,14 +75,14 @@ namespace PresentacionFacturacion
                 reporte.SetParameters(new ReportParameter("FechaDesde", desde.ToString("dd/MM/yyyy")));
                 reporte.SetParameters(new ReportParameter("FechaHasta", hasta.Date.ToString("dd/MM/yyyy")));
                 reporte.SetParameters(new ReportParameter("Usuario", this.usuario));
+
+                this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar los datos del reporte: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            this.reportViewer1.RefreshReport();
         }
     }
 }

@@ -51,6 +51,7 @@ namespace PresentacionFacturacion
             this.facturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.artículosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasPorFechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,6 +115,7 @@ namespace PresentacionFacturacion
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
             this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(286, 34);
             this.usuarioToolStripMenuItem.Text = "Usuario";
+            this.usuarioToolStripMenuItem.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
             // menuprocesos
             // 
@@ -142,7 +144,8 @@ namespace PresentacionFacturacion
             this.menuconsultas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clientesToolStripMenuItem1,
             this.artículosToolStripMenuItem,
-            this.unidadesDeMedidasToolStripMenuItem1});
+            this.unidadesDeMedidasToolStripMenuItem1,
+            this.facturasToolStripMenuItem1});
             this.menuconsultas.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
             this.menuconsultas.IconColor = System.Drawing.Color.Black;
             this.menuconsultas.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -173,6 +176,13 @@ namespace PresentacionFacturacion
             this.unidadesDeMedidasToolStripMenuItem1.Size = new System.Drawing.Size(286, 34);
             this.unidadesDeMedidasToolStripMenuItem1.Text = "Unidades de Medidas";
             this.unidadesDeMedidasToolStripMenuItem1.Click += new System.EventHandler(this.unidadesDeMedidasToolStripMenuItem1_Click);
+            // 
+            // facturasToolStripMenuItem1
+            // 
+            this.facturasToolStripMenuItem1.Name = "facturasToolStripMenuItem1";
+            this.facturasToolStripMenuItem1.Size = new System.Drawing.Size(286, 34);
+            this.facturasToolStripMenuItem1.Text = "Facturas";
+            this.facturasToolStripMenuItem1.Click += new System.EventHandler(this.facturasToolStripMenuItem1_Click);
             // 
             // menureportes
             // 
@@ -274,6 +284,7 @@ namespace PresentacionFacturacion
             this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
             this.facturaToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.facturaToolStripMenuItem.Text = "Factura";
+            this.facturaToolStripMenuItem.Click += new System.EventHandler(this.facturaToolStripMenuItem_Click);
             // 
             // artículosToolStripMenuItem1
             // 
@@ -333,5 +344,6 @@ namespace PresentacionFacturacion
         private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem artículosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ventasPorFechaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem1;
     }
 }

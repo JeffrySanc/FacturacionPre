@@ -40,6 +40,7 @@ namespace PresentacionFacturacion
                     DataRow fila = ds.Tables[0].Rows[0];
                     txtnombre.Text = fila["desart"].ToString().Trim();
                     txtprecio.Text = fila["preart"].ToString().Trim();
+                    txtexistencia.Text = fila["exiactart"].ToString().Trim();
 
                     encontrado = 1;
                 }
@@ -86,6 +87,23 @@ namespace PresentacionFacturacion
                 if (respuesta != DialogResult.Yes)
                     return;
 
+                int existeEnFactura = 0;
+                try
+                {
+                    object resultado = Conexion_BD.EjecutarEscalar(
+                        "select count(*) from sftdefac1 where codart = @codigo",
+                        new SqlParameter("@codigo", txtcodigo.Text.Trim()));
+                    existeEnFactura = Convert.ToInt32(resultado ?? 0);
+                }
+                catch { }
+
+                if (existeEnFactura > 0)
+                {
+                    MessageBox.Show("No se puede eliminar este artículo porque tiene facturas asociadas.",
+                        "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 Conexion_BD.EjecutarComando(
                     "delete from sftarti0 where codart = @codigo",
                     new SqlParameter("@codigo", txtcodigo.Text.Trim()));
@@ -129,6 +147,16 @@ namespace PresentacionFacturacion
                 return false;
             }
 
+            decimal existencia = 0;
+            if (txtexistencia.Text.Trim().Length > 0 &&
+                (!decimal.TryParse(txtexistencia.Text.Trim(), out existencia) || existencia < 0))
+            {
+                MessageBox.Show("La existencia debe ser un valor numérico válido.",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtexistencia.Focus();
+                return false;
+            }
+
             try
             {
                 DateTime fechaguardado = DateTime.Now;
@@ -136,18 +164,20 @@ namespace PresentacionFacturacion
                 if (encontrado == 0)
                 {
                     Conexion_BD.EjecutarComando(
-                        "insert into sftarti0 (codart,desart,preart,fechaguardado) values (@cod,@des,@pre,@fg)",
+                        "insert into sftarti0 (codart,desart,preart,exiactart,fechaguardado) values (@cod,@des,@pre,@exi,@fg)",
                         new SqlParameter("@cod", txtcodigo.Text.Trim()),
                         new SqlParameter("@des", txtnombre.Text.Trim()),
                         new SqlParameter("@pre", precio),
+                        new SqlParameter("@exi", existencia),
                         new SqlParameter("@fg", fechaguardado));
                 }
                 else
                 {
                     Conexion_BD.EjecutarComando(
-                        "update sftarti0 set desart = @des, preart = @pre, fechaguardado = @fg where codart = @cod",
+                        "update sftarti0 set desart = @des, preart = @pre, exiactart = @exi, fechaguardado = @fg where codart = @cod",
                         new SqlParameter("@des", txtnombre.Text.Trim()),
                         new SqlParameter("@pre", precio),
+                        new SqlParameter("@exi", existencia),
                         new SqlParameter("@fg", fechaguardado),
                         new SqlParameter("@cod", txtcodigo.Text.Trim()));
                 }
@@ -156,6 +186,8 @@ namespace PresentacionFacturacion
                     "Registro guardado correctamente..." :
                     "Registro actualizado correctamente...",
                     "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                encontrado = 1;
             }
             catch (Exception error)
             {
@@ -164,7 +196,7 @@ namespace PresentacionFacturacion
                 return false;
             }
 
-            btneliminar.Enabled = false;
+            btneliminar.Enabled = true;
             btnguardar.Enabled = false;
             txtnombre.Focus();
 
@@ -176,6 +208,7 @@ namespace PresentacionFacturacion
             txtcodigo.Clear();
             txtnombre.Clear();
             txtprecio.Clear();
+            txtexistencia.Clear();
             encontrado = 0;
             btneliminar.Enabled = false;
             btnguardar.Enabled = false;

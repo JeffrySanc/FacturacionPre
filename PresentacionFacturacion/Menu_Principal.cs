@@ -1,15 +1,6 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
 
 namespace PresentacionFacturacion
 {
@@ -18,101 +9,73 @@ namespace PresentacionFacturacion
         public Menu_Principal(string nombre)
         {
             InitializeComponent();
-            
-
             lblusuario.Text = nombre;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void AbrirFormularioHijo<T>(string textoMenu) where T : Form, new()
         {
+            Form existente = this.MdiChildren
+                .FirstOrDefault(f => f.GetType() == typeof(T));
 
-        }
+            if (existente != null)
+            {
+                existente.Activate();
 
-        private void unidadesDeMedidasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form unidades_medidas = new MantenimientoUnidMedi();
-            unidades_medidas.MdiParent = this;
-            unidades_medidas.WindowState = FormWindowState.Maximized; //Ocupa todo el contenedor
-            unidades_medidas.Show();
-        }
+                if (existente.WindowState == FormWindowState.Minimized)
+                    existente.WindowState = FormWindowState.Maximized;
 
-        private void lblusuario_Click(object sender, EventArgs e)
-        {
+                return;
+            }
 
-        }
-
-        private void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void iconMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menucolor_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void artículosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form conArti = new ConsultaArticulos();
-            conArti.MdiParent = this;
-            conArti.WindowState = FormWindowState.Maximized; //Ocupa todo el contenedor
-            conArti.Show();
-        }
-
-        private void articulosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form mantArti = new MantenimientoArticulos();
-            mantArti.MdiParent = this;
-            mantArti.WindowState = FormWindowState.Maximized;
-            mantArti.Show();
-        }
-
-        private void unidadesDeMedidasToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void facturacionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form factura = new Facturacion();
-            factura.MdiParent = this;
-            factura.WindowState = FormWindowState.Maximized;
-            factura.Show();
+            Form formulario = new T();
+            formulario.MdiParent = this;
+            formulario.WindowState = FormWindowState.Maximized;
+            formulario.Show();
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form mantCli = new MantenimientoCliente();
-            mantCli.MdiParent = this;
-            mantCli.WindowState = FormWindowState.Maximized; //Ocupa todo el contenedor
-            mantCli.Show();
+            AbrirFormularioHijo<MantenimientoCliente>("Mantenimiento de Clientes");
+        }
 
+        private void articulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo<MantenimientoArticulos>("Mantenimiento de Artículos");
+        }
+
+        private void unidadesDeMedidasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo<MantenimientoUnidMedi>("Mantenimiento de Unidades de Medida");
+        }
+
+        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo<MantenimientoUsuario>("Mantenimiento de Usuarios");
+        }
+
+        private void facturacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo<Facturacion>("Facturación");
         }
 
         private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Form conCli = new ConsultaClientes();
-            conCli.MdiParent = this;
-            conCli.WindowState = FormWindowState.Maximized; //Ocupa todo el contenedor
-            conCli.Show();
+            AbrirFormularioHijo<ConsultaClientes>("Consulta de Clientes");
         }
 
-        private void menusalir_Click(object sender, EventArgs e)
+        private void artículosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseas Salir?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                this.Close();
-            }
+            AbrirFormularioHijo<ConsultaArticulos>("Consulta de Artículos");
         }
 
-        private void menureportes_Click(object sender, EventArgs e)
+        private void unidadesDeMedidasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            AbrirFormularioHijo<ConsultaUnidMedi>("Consulta de Unidades de Medida");
+        }
 
+        private void facturasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AbrirFormularioHijo<ConsultaFacturas>("Consulta de Facturas");
         }
 
         private void clientesToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -121,6 +84,14 @@ namespace PresentacionFacturacion
             repCli.MdiParent = this;
             repCli.WindowState = FormWindowState.Maximized;
             repCli.Show();
+        }
+
+        private void facturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form repFac = new ReportesFactura(lblusuario.Text);
+            repFac.MdiParent = this;
+            repFac.WindowState = FormWindowState.Maximized;
+            repFac.Show();
         }
 
         private void artículosToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -137,6 +108,43 @@ namespace PresentacionFacturacion
             repVen.MdiParent = this;
             repVen.WindowState = FormWindowState.Maximized;
             repVen.Show();
+        }
+
+        private void menusalir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(
+                "¿Deseas salir?",
+                "Aviso",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void lblusuario_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+        }
+
+        private void iconMenuItem1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void menucolor_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+        }
+
+        private void menureportes_Click(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -36,22 +36,9 @@ namespace PresentacionFacturacion
             this.txtdescripcion_uni = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // btnguardar
-            // 
-            this.btnguardar.Click += new System.EventHandler(this.btnguardar_Click);
-            // 
-            // btneliminar
-            // 
-            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
-            // 
-            // btnbuscar
-            // 
-            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
-            // 
             // btnsalir
             // 
             this.btnsalir.Location = new System.Drawing.Point(664, 308);
-            this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
             // 
             // label1
             // 
@@ -71,7 +58,6 @@ namespace PresentacionFacturacion
             this.label2.Size = new System.Drawing.Size(153, 20);
             this.label2.TabIndex = 13;
             this.label2.Text = "Código de Unidades";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 

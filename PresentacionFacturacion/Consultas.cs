@@ -18,12 +18,17 @@ namespace PresentacionFacturacion
         {
             InitializeComponent();
         }
+        private static readonly System.Collections.Generic.HashSet<string> TablasPermitidas =
+            new System.Collections.Generic.HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            { "SFTCLIE0", "SFTARTI0", "SFTUNID0", "SFTUSUA0", "SFTFACT0", "SFTDEFAC1", "SFTCONF0" };
+
         public DataSet LlenarDGV(string tabla)
         {
-            DataSet ds;
-            string cmd = string.Format("select * from " + tabla);
-            ds = Conexion_BD.Ejecutar(cmd);
-            return ds;
+            if (!TablasPermitidas.Contains(tabla))
+                throw new System.Security.SecurityException("Tabla no permitida: " + tabla);
+
+            string cmd = "select * from [" + tabla + "]";
+            return Conexion_BD.Ejecutar(cmd);
         }
         private void Consultas_Load(object sender, EventArgs e)
         {

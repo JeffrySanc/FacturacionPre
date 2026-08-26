@@ -72,6 +72,36 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultaFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaFacturas.Designer.cs">
+      <DependentUpon>ConsultaFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaUsuarios.Designer.cs">
+      <DependentUpon>ConsultaUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaUnidMedi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaUnidMedi.Designer.cs">
+      <DependentUpon>ConsultaUnidMedi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoUsuario.Designer.cs">
+      <DependentUpon>MantenimientoUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportesFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportesFactura.Designer.cs">
+      <DependentUpon>ReportesFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsultaArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +207,22 @@
     <Compile Include="ReportesVentasFecha.Designer.cs">
       <DependentUpon>ReportesVentasFecha.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ConsultaFacturas.resx">
+      <DependentUpon>ConsultaFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaUsuarios.resx">
+      <DependentUpon>ConsultaUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultaUnidMedi.resx">
+      <DependentUpon>ConsultaUnidMedi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoUsuario.resx">
+      <DependentUpon>MantenimientoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportesFactura.resx">
+      <DependentUpon>ReportesFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportFactura.rdlc" />
     <EmbeddedResource Include="ConsultaArticulos.resx">
       <DependentUpon>ConsultaArticulos.cs</DependentUpon>
     </EmbeddedResource>

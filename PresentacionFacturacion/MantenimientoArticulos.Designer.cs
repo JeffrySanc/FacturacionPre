@@ -32,9 +32,11 @@ namespace PresentacionFacturacion
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtcodigo = new System.Windows.Forms.TextBox();
             this.txtnombre = new System.Windows.Forms.TextBox();
             this.txtprecio = new System.Windows.Forms.TextBox();
+            this.txtexistencia = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -86,11 +88,29 @@ namespace PresentacionFacturacion
             this.txtprecio.Size = new System.Drawing.Size(217, 26);
             this.txtprecio.TabIndex = 17;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(122, 295);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 20);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Existencia:";
+            // 
+            // txtexistencia
+            // 
+            this.txtexistencia.Location = new System.Drawing.Point(222, 292);
+            this.txtexistencia.Name = "txtexistencia";
+            this.txtexistencia.Size = new System.Drawing.Size(217, 26);
+            this.txtexistencia.TabIndex = 19;
+            // 
             // MantenimientoArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 450);
+            this.Controls.Add(this.txtexistencia);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtprecio);
             this.Controls.Add(this.txtnombre);
             this.Controls.Add(this.txtcodigo);
@@ -111,6 +131,8 @@ namespace PresentacionFacturacion
             this.Controls.SetChildIndex(this.txtcodigo, 0);
             this.Controls.SetChildIndex(this.txtnombre, 0);
             this.Controls.SetChildIndex(this.txtprecio, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.txtexistencia, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,8 +143,10 @@ namespace PresentacionFacturacion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtcodigo;
         private System.Windows.Forms.TextBox txtnombre;
         private System.Windows.Forms.TextBox txtprecio;
+        private System.Windows.Forms.TextBox txtexistencia;
     }
 }
